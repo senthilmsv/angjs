@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\css\FontCss.css" />
+    <Content Include="wwwroot\css\Materialicon.css" />
+    <Content Include="wwwroot\css\materialize.css" />
+    <Content Include="wwwroot\css\style.css" />
+    <Content Include="wwwroot\css\style.min.css" />
+    <Content Include="wwwroot\css\themes\all-themes.css" />
+    <Content Include="wwwroot\css\themes\all-themes.min.css" />
+    <Content Include="wwwroot\css\themes\theme-amber.css" />
+    <Content Include="wwwroot\css\themes\theme-amber.min.css" />
+    <Content Include="wwwroot\css\themes\theme-black.css" />
+    <Content Include="wwwroot\css\themes\theme-black.min.css" />
+    <Content Include="wwwroot\css\themes\theme-blue-grey.css" />
+    <Content Include="wwwroot\css\themes\theme-blue-grey.min.css" />
+    <Content Include="wwwroot\css\themes\theme-blue.css" />
+    <Content Include="wwwroot\css\themes\theme-blue.min.css" />
+    <Content Include="wwwroot\css\themes\theme-brown.css" />
+    <Content Include="wwwroot\css\themes\theme-brown.min.css" />
+    <Content Include="wwwroot\css\themes\theme-cyan.css" />
+    <Content Include="wwwroot\css\themes\theme-cyan.min.css" />
+    <Content Include="wwwroot\css\themes\theme-deep-orange.css" />
+    <Content Include="wwwroot\css\themes\theme-deep-orange.min.css" />
+    <Content Include="wwwroot\css\themes\theme-deep-purple.css" />
+    <Content Include="wwwroot\css\themes\theme-deep-purple.min.css" />
+    <Content Include="wwwroot\css\themes\theme-green.css" />
+    <Content Include="wwwroot\css\themes\theme-green.min.css" />
+    <Content Include="wwwroot\css\themes\theme-grey.css" />
+    <Content Include="wwwroot\css\themes\theme-grey.min.css" />
+    <Content Include="wwwroot\css\themes\theme-indigo.css" />
+    <Content Include="wwwroot\css\themes\theme-indigo.min.css" />
+    <Content Include="wwwroot\css\themes\theme-light-blue.css" />
+    <Content Include="wwwroot\css\themes\theme-light-blue.min.css" />
+    <Content Include="wwwroot\css\themes\theme-lime.css" />
+    <Content Include="wwwroot\css\themes\theme-lime.min.css" />
+    <Content Include="wwwroot\css\themes\theme-orange.css" />
+    <Content Include="wwwroot\css\themes\theme-orange.min.css" />
+    <Content Include="wwwroot\css\themes\theme-pink.css" />
+    <Content Include="wwwroot\css\themes\theme-pink.min.css" />
+    <Content Include="wwwroot\css\themes\theme-purple.css" />
+    <Content Include="wwwroot\css\themes\theme-purple.min.css" />
+    <Content Include="wwwroot\css\themes\theme-red.css" />
+    <Content Include="wwwroot\css\themes\theme-red.min.css" />
+    <Content Include="wwwroot\css\themes\theme-teal.css" />
+    <Content Include="wwwroot\css\themes\theme-teal.min.css" />
+    <Content Include="wwwroot\css\themes\theme-yellow.css" />
+    <Content Include="wwwroot\css\themes\theme-yellow.min.css" />
+    <Content Include="wwwroot\images\NBanner1.svg" />
+    <Content Include="wwwroot\images\user-img-background.jpg" />
+    <Content Include="wwwroot\images\user.png" />
+    <Content Include="wwwroot\js\admin.js" />
+    <Content Include="wwwroot\js\demo.js" />
+    <Content Include="wwwroot\lib\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="wwwroot\lib\node-waves\waves.css" />
+    <Content Include="wwwroot\lib\node-waves\waves.js" />
+    <Content Include="wwwroot\lib\node-waves\waves.min.css" />
+    <Content Include="wwwroot\lib\node-waves\waves.min.js" />
+    <Content Include="wwwroot\lib\node-waves\waves.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

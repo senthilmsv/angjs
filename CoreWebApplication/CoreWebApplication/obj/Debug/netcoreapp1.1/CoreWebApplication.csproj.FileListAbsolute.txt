@@ -1,0 +1,9 @@
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.deps.json
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.runtimeconfig.json
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.runtimeconfig.dev.json
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.dll
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.pdb
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.csprojResolveAssemblyReference.cache
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.AssemblyInfo.cs
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.dll
+C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.pdb
