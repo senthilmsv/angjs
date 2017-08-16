@@ -1,0 +1,250 @@
+﻿@model HiAsgRAS.ViewModel.HiradServerModel
+
+<input type="hidden" id="hdnServerSaveUrl" value="@Url.Action("UpdateServerList", "HiradServer")" />
+<input type="hidden" id="hdnGetSystemInformationUrl" value="@Url.Action("GetSystemInformation", "HiradServer")" />
+<input type="hidden" id="hdnServerAction" value="@Model.ActionMode" />
+<input type="hidden" id="hdnSelectedRowId" value="@Model.Id" />
+<input type="hidden" id="txtNewServerId" value="@Model.NewServerId" />
+<input type="hidden" id="hdnPrvStatusTypeId" value="@Model.StatusTypeId" />
+<input type="hidden" id="txtStatusTypeChangedOn" value="@Model.StatusTypeChangedOn" />
+<input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" />
+<input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+
+
+<div class="card">
+    <div class="card-header" data-background-color="green">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <i class="fa fa-server" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Hawaii Servers</h4>
+
+    </div>
+    <div class="card-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">System Name</label>
+                            <input type="text" class="form-control" id="txtSysn" maxlength="100" value="@Model.SystemName">
+
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group label-floating">
+                            <button class="btn btn-facebook"
+                                    style="padding: 5px 5px;"
+                                    title="Get System Information"
+                                    id="btnGetSystemInfo">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group label-floating">
+                            <label class="control-label">IP Address</label>
+                            <input type="text" class="form-control" id="txtIa" maxlength="50"
+                                   readonly="readonly" value="@Model.IPAddress">
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Platform</label>
+                            <input type="text" class="form-control" id="txtPf" maxlength="100"
+                                   readonly="readonly" value="@Model.Platform">
+                        </div>
+                    </div>               
+                </div>
+
+                <div class="row">
+                    
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Build Version</label>
+                            <input type="text" class="form-control" id="txtBuildVersion" maxlength="100"
+                                   readonly="readonly" value="@Model.BuildVersion">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Model</label>
+                            <input type="text" class="form-control" id="txtMo" maxlength="100"
+                                   readonly="readonly" value="@Model.Model">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Processor</label>
+                            <input type="text" class="form-control" id="txtProcessor"
+                                   readonly="readonly" value="@Model.Processor">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Total # of Cores</label>
+                            <input type="text" class="form-control" id="txtTot" maxlength="50"
+                                   readonly="readonly" value="@Model.TotalCores">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">System Last Boot Time</label>
+                            <input type="text" class="form-control" id="txtBootTime" readonly="readonly" value="@Model.LastBootTime">
+                        </div>
+                    </div>
+  <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">HDD Configuration</label>
+                            <input type="text" class="form-control" id="txtHdd" maxlength="200"
+                                   readonly="readonly" value="@Model.HDDConfiguration">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">RAM(GB)</label>
+                            <input type="text" class="form-control" id="txtRam" maxlength="50"
+                                   readonly="readonly" value="@Model.RAM">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Status Type</label>
+                            @Html.DropDownListFor(x => x.StatusTypeId, Model.StatusTypes,
+                                            new { @class = "form-control", @id = "ddlStatusType" })
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Location</label>
+                            <input type="text" class="form-control" id="txtLoc" maxlength="100" value="@Model.Location">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                 
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Serial Number</label>
+                            <input type="text" class="form-control" id="txtSn" maxlength="100" value="@Model.SerialNumber">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Assest Tag</label>
+                            <input type="text" class="form-control" id="txtAt" maxlength="100" value="@Model.AssetTag">
+                        </div>
+                    </div>
+                 <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">ABC ID	</label>
+                            <input type="text" class="form-control" id="txtAbc" maxlength="50" value="@Model.ABCId">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">                 
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Cost Center</label>
+                            <input type="text" class="form-control" id="txtCc" maxlength="100" value="@Model.CostCenter">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Remedy Group</label>
+                            <input type="text" class="form-control" id="txtSs" maxlength="200" value="@Model.SupportStaff">
+                        </div>
+                    </div>
+
+ <div class="col-md-2">
+                        <div class="form-group">
+                            @{
+            string yesChecked = "", noChecked = "";
+            if (!string.IsNullOrEmpty(Model.TSMInstalled) &&
+                Model.TSMInstalled.ToLower().Trim().Equals("yes"))
+            {
+                yesChecked = "checked='checked'";
+            }
+            else
+            {
+                noChecked = "checked='checked'";
+            }
+
+            <div class="form-group label-floating">
+                <label class="control-label">TSM Installed(Yes/No)</label>
+                <input type="radio" id="rdYes" name="rdTSMI" value="yes" style="width: 20px" @yesChecked />Yes &nbsp;
+                <input type="radio" id="rdNo" name="rdTSMI" value="no" style="width: 20px" @noChecked>No
+            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            @{
+            yesChecked = "";
+            if (Model.IsMonitor)
+            {
+                yesChecked = " checked='checked'";
+            }
+            <div class="form-group label-floating">
+                <label class="control-label">Include in Server Monitor tool?</label>
+                <input type="checkbox" id="chkIsMonitor" @yesChecked />
+            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+          
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group label-floating">
+                                <label class="control-label">System Info/Use</label>
+                                <input type="text" class="form-control" id="txtAppUse" maxlength="200" value="@Model.ApplicationUse">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Comments</label>                                
+                                @Html.TextArea("txtComment", @Model.Comments, new { rows = 10, @class = "form-control TextArea" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="btnCancel ">Cancel</button>
+                        <button type="button" class="btn btn-primary pull-right" id="btnServerUpdate">Update</button>
+                    </div>
+                </div>
+
+
+                <div class="clearfix"></div>
+
+                <!--Close div-->
+            </div>
+        }
+    </div>
+</div>
+

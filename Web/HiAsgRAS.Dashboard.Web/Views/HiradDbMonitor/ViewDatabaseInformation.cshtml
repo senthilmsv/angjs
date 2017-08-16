@@ -1,0 +1,120 @@
+﻿@model HiAsgRAS.ViewModel.HiradDbMonitorModel
+<input type="hidden" id="hdnDbSaveUrl" value="@Url.Action("UpdateDbList", "HiradDbMonitor")" />
+<input type="hidden" id="uSearchServerUrl" value="@Url.Action("SearchServerInformation", "HiradDbMonitor")" />>
+<input type="hidden" id="hdnDbAction" value="@Model.ActionMode" />
+<input type="hidden" id="hdnSelectedRowId" value="@Model.Id" />
+<input type="hidden" id="txtNewDbId" value="@Model.NewDbId" />
+<input type="hidden" id="txtStatusTypeChangedOn" value="@Model.StatusTypeChangedOn" />
+<input type="hidden" id="hdnPrvStatusTypeId" value="@Model.StatusTypeId" />
+<input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" />
+<input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+<input type="hidden" id="uSearchServerList" value="@Url.Action("SearchServerList", "HiradServer")" />
+
+
+<div class="card">
+    <div class="card-header" data-background-color="cyan">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <i class="fa fa-database" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Database</h4>
+
+    </div>
+    <div class="card-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+          
+            <div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Application</label>
+                            <input type="text" class="form-control" id="txtApp" maxlength="50" value="@Model.Application">
+                        </div>
+                    </div>
+
+                       <div class="col-md-5">
+                        <div class="form-group label-floating">
+                            <label class="control-label">DB Server</label>
+                            <input type="text" class="form-control" id="txtDbServer" readonly="readonly" 
+                                   value="@Model.DBServer" maxlength="50">
+                            <input type="hidden" id="txtDbServerId" value="@Model.DbServerId" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group label-floating">
+                            <button class="btn btn-facebook"
+                                    style="padding: 5px 5px;"
+                                    title="Get Server List"
+                                    id="btnDbServerSearch">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                 
+
+                </div>
+
+                <div class="row">
+   <div class="col-md-6">
+                        <div class="form-group label-floating">
+                            <label class="control-label">DB Name</label>
+                            <input type="text" class="form-control" id="txtDbName" maxlength="50" value="@Model.DbName">
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Status Type</label>
+                            @Html.DropDownListFor(x => x.StatusTypeId, Model.StatusTypes,
+                                            new { @class = "form-control", @id = "ddlStatusType" })
+                        </div>
+                    </div>
+  <div class="col-md-3">
+                        <div class="form-group">
+                            @{
+            string yesChecked = "";
+            if (Model.IsMonitor)
+            {
+                yesChecked = " checked='checked'";
+            }
+            <div class="form-group label-floating">
+                <label class="control-label">Include in Server Monitor tool?</label>
+                <input type="checkbox" id="chkIsMonitor" @yesChecked />
+            </div>
+                            }
+                        </div>
+                    </div>
+                  
+                </div>
+                
+              
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="btnCancel ">Cancel</button>
+                        <button type="button" class="btn btn-primary pull-right" id="btnDbUpdate">Update</button>
+                    </div>
+                </div>
+
+
+                <div class="clearfix"></div>
+
+                <!--Close div-->
+            </div>
+        }
+    </div>
+</div>
+
+@* All the required js for this corresponding page should be added here  *@
+@section scripts{
+    @Scripts.Render("~/bundles/dataTableJs")
+    @Scripts.Render("~/bundles/appsJs")
+
+    <script>
+        //Dom Ready
+        $(function () {
+
+
+        });
+    </script>
+}

@@ -1,0 +1,175 @@
+﻿<div class="card card-nav-tabs">
+    <!-- Header -->
+    <div class="card-header" data-background-color="indigo">
+        <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+                <span class="nav-tabs-title">Server Monitor:</span>
+
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="active">
+                        <a href="#tabServers" data-toggle="tab">
+                            <i class="fa fa-server" aria-hidden="true"></i>
+                            Servers<div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabRAM" data-toggle="tab">
+                            <i class="fa fa-microchip" aria-hidden="true"></i>
+                            RAM<div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabHDD" data-toggle="tab">
+                            <i class="fa fa-hdd-o" aria-hidden="true"></i>
+                            HDD<div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabServerReboot" data-toggle="tab">
+                            <i class="fa fa-bolt" aria-hidden="true"></i>
+                            Server Reboot<div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabWebSites" data-toggle="tab">
+                            <i class="fa fa-laptop" aria-hidden="true"></i>
+                            Website<div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabDatabase" data-toggle="tab">
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                            Database<div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+                <p class="category">Below lists are Monitored by APP Server Monitor tool</p>
+            </div>
+        </div>
+    </div>
+
+    @*Content*@
+
+    <div class="card-content">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabServers">
+                <table class="table table-hover table-condensed table-striped" id="tblSMServers" style="width:100%;">
+                    <thead class="text-rose">
+                        <tr role="row">
+                            <th>View</th>
+                            <th>System Name</th>
+                            <th>Monitored At</th>
+                            <th>Staus</th>
+                            <th>Error Description</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="tabRAM">
+                <table class="table table-hover table-condensed table-striped" id="tblSMRAM" style="width:100%;">
+                    <thead class="text-rose">
+                        <tr role="row">
+                            @*<th>View</th>*@
+                            <th>System</th>
+                            <th>Monitored At</th>
+                            <th>Total RAM</th>
+                            <th>Free RAM</th>
+                            <th>Used in %</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="tabHDD">
+                <table class="table table-hover table-condensed table-striped" id="tblSMHdd" style="width:100%;">
+                    <thead class="text-rose">
+                        <tr role="row">
+                            <th>System</th>
+                            <th>Monitored At</th>
+                            <th>HDD Configuration</th>
+                            <th>Available HDD</th>
+                            <th>Used %</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="tabServerReboot">
+                <table class="table table-hover table-condensed table-striped" id="tblSMReboot" style="width:100%;">
+                    <thead class="text-rose">
+                        <tr role="row">
+                            <th>System</th>
+                            <th>Monitored At</th>
+                            <th>Last Boot Time</th>
+                            <th>Since in Days</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="tabWebSites">
+                <table class="table table-hover table-condensed table-striped" id="tblSMWeb" style="width:100%;">
+                    <thead class="text-rose">
+                        <tr role="row">
+                            <th>View</th>
+                            <th>Web Site</th>
+                            <th>Monitored At</th>
+                            <th>Staus</th>
+                            <th>Error Description</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="tabDatabase">
+                <table class="table table-hover table-condensed table-striped" id="tblSMDB" style="width:100%;">
+                    <thead class="text-rose">
+                        <tr role="row">
+                            <th>View</th>
+                            <th>Application</th>
+                            <th>DB Name</th>
+                            <th>DB Server</th>
+                            <th>Monitored At</th>
+                            <th>Staus</th>
+                            <th>Error Description</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="stats">
+            <i class="fa fa-clock-o" aria-hidden="true"></i> <span id="spanSMServerMoniteredAt"></span>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="uGetAllServerLogStatusByLastRun" value="@Url.Action("GetAllServerLogStatusByLastRun", "HiradServerLog")" />
+<input type="hidden" id="uGetAllRAMStatusByLastRun" value="@Url.Action("GetAllRAMStatusByLastRun", "HiradServerRAM")" />
+<input type="hidden" id="uGetAllHddStatusByLastRun" value="@Url.Action("GetAllHddStatusByLastRun", "HiradServerHdd")" />
+<input type="hidden" id="uGetAllRebStatusByLastRun" value="@Url.Action("GetAllRebStatusByLastRun", "HiradServerReb")" />
+<input type="hidden" id="uGetAllWebLogStatusByLastRun" value="@Url.Action("GetAllWebLogStatusByLastRun", "HiradWebLog")" />
+<input type="hidden" id="uGetAllDBLogStatusByLastRun" value="@Url.Action("GetAllDBLogStatusByLastRun", "HiradDbMonitorLog")" />
+<input type="hidden" id="uGetAllWebLog" value="@Url.Action("ViewWebLog", "HiradWebLog")" />
+<input type="hidden" id="uGetAllDBLog" value="@Url.Action("ViewDBLog", "HiradDbMonitorLog")" />
+
+<script>
+    $(function () {
+        portletMonitoring.SMServers();
+        portletMonitoring.SMRam();
+        portletMonitoring.SMHdd();
+        portletMonitoring.SMReboot();
+        portletMonitoring.SMWebsites();
+        portletMonitoring.SMDatabase();
+    });
+</script>
+
+

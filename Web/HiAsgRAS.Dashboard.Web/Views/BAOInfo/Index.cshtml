@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "";
+}
+
+<div class="card">
+    <div class="card-header" data-background-color="purple">
+        <i class="fa fa-anchor" aria-hidden="true"></i> <h4 class="title" style="display: inline;">BAO Information</h4>
+
+        <button class="btn btn-warning pull-right" type="button" title="Add BAO Information" id="btnBAOInfoAdd">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add BAO
+        </button>
+    </div>
+    <div class="card-content">
+        <table class="table table-striped table-bordered table-hover table-condensed table-striped"
+               id="hiBAOInfo" style="width:100%;">
+            <thead>
+                <tr>
+                    <th class="sortingDisabled notExport"></th>
+                   @* <th class="notExport"></th>
+                    <th class="notExport"></th>*@
+                    <th>App Owner (Primary)</th>
+                    <th>Email (Primary)</th>
+                    <th>Phone (Primary)</th>
+                    <th>Department (Primay)</th>
+                    <th>App Owner (Secondary)</th>
+                    <th>Email (Secondary)</th>
+                    <th>Phone (Secondary)</th>
+                    <th>Department (Secondary)</th>
+                    @*   <th>Is Active</th>*@
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="uSearchBAOList" value="@Url.Action("SearchBAOList", "BAOInfo")" />
+<input type="hidden" id="uViewBAOInformation" value="@Url.Action("ViewBAOInformation", "BAOInfo")" />
+<input type="hidden" id="hdnBAODeleteUrl" value="@Url.Action("DeleteBAO", "BAOInfo")" />
+
+@* All the required css for this corresponding page should be added here *@
+@section head{
+    @Styles.Render("~/Content/dataTablecss")
+
+}
+
+
+@* All the required js for this corresponding page should be added here  *@
+@section scripts{
+    @Scripts.Render("~/bundles/dashboardPageJs")
+    @Scripts.Render("~/bundles/appsJs")
+
+    <script>
+        //Dom Ready
+        $(function () {
+            baoInfoCRUD.reset_datatable_state();
+            baoInfoCRUD.searchResult();
+        });
+    </script>
+}
+

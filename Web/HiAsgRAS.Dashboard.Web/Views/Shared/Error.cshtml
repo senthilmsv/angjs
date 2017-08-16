@@ -1,0 +1,73 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{    
+    ViewBag.Title = "Error";
+    ViewBag.ApplicationTitle = "HI ASG RAS";
+}
+
+<style type="text/css">
+    .ErrorBoxStyle {
+        width: 700px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border: 2px solid #666666;
+        background-color: gainsboro;
+    }
+
+    .ErrorHeader {
+        background-color: darkred;
+        font-family: Verdana;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 16px;
+        padding-left: 5px;
+        padding-top: 5px;
+    }
+
+    .ErrorTitle {
+        margin-top: 10px;
+        font-family: Verdana;
+        color: #333333;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    .ErrorMessage {
+        margin-top: 10px;
+        font-family: Verdana;
+        color: darkmagenta;
+        font-size: 13px;
+        margin-left: 10px;
+        font-weight: bold;
+    }
+
+    table{
+        margin: 10px;
+    }
+</style>
+
+<div class="title">
+    <div class="ErrorBoxStyle">
+        <div style="height: 25px" class="ErrorHeader">
+            <div>@ViewBag.ApplicationTitle Application Request Failed.</div>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <img src="~/Images/error.png" style="width: 100px; height: 100px;" />
+                    </td>
+                    <td>
+                        <div class="ErrorTitle">Unable to process your @ViewBag.ApplicationTitle request due to the below reasons</div>
+                        <div class="ErrorMessage">@Model.Exception.Message</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

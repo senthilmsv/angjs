@@ -1,0 +1,30 @@
+﻿
+<div class="card">
+    <div class="card-header" data-background-color="purple">
+        <h4 class="title">SharePoint Sites</h4>
+        <p class="category">List of Sites maintained by HI ASG RAS</p>
+    </div>
+    <div class="card-content table-responsive">
+        <table class="table table-striped table-hover table-condensed table-striped" id="tblSPSites" style="width:100%;">
+            <thead class="text-rose">
+                <tr>
+                    <th>Name</th>
+                    <th>Primary Contact</th>
+                    <th>Secondary</th>
+                    <th>Business Dept.</th>
+                    <th title="Business Contact">Contact</th>
+                    <th title="Business Phone">Phone</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<input type="hidden" id="uGetAllSPSites" value="@Url.Action("GetAllSPSites", "HiradWebLog")" />
+
+<script>
+    //Dom Ready
+    $(function () {
+        sharepointSites.SPSites();
+    });
+</script>

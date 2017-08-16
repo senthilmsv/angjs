@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "";
+}
+
+<div class="card">
+    <div class="card-header" data-background-color="purple">
+        <i class="fa fa-desktop" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Client Apps</h4>
+
+        <button class="btn btn-warning pull-right" type="button" title="Add New Client Apps" id="btnClientAppsAdd">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add Client Apps
+        </button>
+    </div>
+    <div class="card-content">
+        <table class="table table-striped table-bordered table-hover table-condensed table-striped"
+               id="dtHiradApp" style="width:100%;">
+            <thead>
+                <tr>
+                    <th class="sortingDisabled notExport"></th>
+                  @*  <th class="notExport"></th>
+                    <th class="notExport"></th>*@
+                    <th>Application</th>
+                    <th>Version</th>
+                    
+                    <th>Server</th>
+                    <th>Application Layer</th>
+                    <th>Layer Location </th>
+                    <th>Remedy Group</th>
+                    <th>Primary Support</th>
+                    <th>BP Info</th>
+                    <th>ABC ID </th>
+                    @*<th>Status</th>*@
+                    <th>Vendor</th>
+                    <th>Website URL</th>
+                    <th>SAT Name</th>
+                    <th>License Required</th>
+                    <th>Windows 10 32 bit Tested</th>
+                    <th>Windows 10 64 bit Tested</th>
+                    <th>Application Live Date</th>
+                    <th>Application Renewal Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <input type="hidden" id="hdnAppLoadUrl" value="@Url.Action("SearchAppList", "HiradApp")" />
+    <input type="hidden" id="uviewClientInformation" value="@Url.Action("ViewClientAppsInformation", "HiradApp")" />
+    <input type="hidden" id="hdnAppDeleteUrl" value="@Url.Action("DeleteApp", "HiradApp")" />
+
+</div>
+
+
+@* All the required css for this corresponding page should be added here *@
+@section head{
+    @Styles.Render("~/Content/dataTablecss")
+}
+
+
+@* All the required js for this corresponding page should be added here  *@
+@section scripts{
+    @Scripts.Render("~/bundles/dataTableJs")
+@Scripts.Render("~/bundles/dataTableExportPlugins")
+    @Scripts.Render("~/bundles/appsJs")
+    <script>
+        //Dom Ready
+        $(function () {
+            ClientAppCRUD.reset_datatable_state();
+            ClientAppCRUD.appSearchResult('Y');
+        });
+    </script>
+}
+

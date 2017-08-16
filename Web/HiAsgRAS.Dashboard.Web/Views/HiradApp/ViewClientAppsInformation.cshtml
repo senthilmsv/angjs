@@ -1,0 +1,371 @@
+﻿@model HiAsgRAS.ViewModel.HiradAppModel
+<input type="hidden" id="hdnClientAppSaveUrl" value="@Url.Action("UpdateAppList", "HiradApp")" />
+<input type="hidden" id="hdnGetLayerLocUrl" value="@Url.Action("GetLayerDetails", "LayerInfo")" />
+<input type="hidden" id="uSearchServerUrl" value="@Url.Action("SearchServerInformation", "HiradApp")" />
+<input type="hidden" id="uSearchBAOUrl" value="@Url.Action("SearchBAOInformation", "HiradApp")" />
+<input type="hidden" id="hdnAppAction" value="@Model.ActionMode" />
+<input type="hidden" id="hdnSelectedRowId" value="@Model.Id" />
+<input type="hidden" id="txtNewWebAppId" value="@Model.NewAppId" />
+<input type="hidden" id="txtStatusTypeChangedOn" value="@Model.StatusTypeChangedOn" />
+<input type="hidden" id="hdnPrvStatusTypeId" value="@Model.StatusTypeId" />
+<input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" />
+<input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+<input type="hidden" id="uSearchServerList" value="@Url.Action("SearchServerList", "HiradServer")" />
+<input type="hidden" id="uSearchBAOList" value="@Url.Action("GetBAOList", "BAOInfo")" />
+
+<div class="card">
+    <div class="card-header" data-background-color="purple">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <i class="fa fa-desktop" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Client Apps</h4>
+
+    </div>
+    <div class="card-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            string yesCheckedLicType = "", noCheckedLicType = "";
+            if (!string.IsNullOrEmpty(Model.LicenseType) &&
+                (Model.LicenseType.ToLower().Trim().Equals("yes") ||
+                Model.LicenseType.ToLower().Trim().Equals("y")))
+            {
+                yesCheckedLicType = "checked='checked'";
+            }
+            else
+            {
+                noCheckedLicType = "checked='checked'";
+            }
+
+            string yesCheckedW32 = "", noCheckedW32 = "";
+            if (!string.IsNullOrEmpty(Model.Windows1032Tested) &&
+                (Model.Windows1032Tested.ToLower().Trim().Equals("yes") ||
+                Model.Windows1032Tested.ToLower().Trim().Equals("y")))
+            {
+                yesCheckedW32 = "checked='checked'";
+            }
+            else
+            {
+                noCheckedW32 = "checked='checked'";
+            }
+
+            string yesChecked64 = "", noChecked64 = "";
+            if (!string.IsNullOrEmpty(Model.Windows1064Tested) &&
+                (Model.Windows1064Tested.ToLower().Trim().Equals("yes")
+                || Model.Windows1064Tested.ToLower().Trim().Equals("y")))
+            {
+                yesChecked64 = "checked='checked'";
+            }
+            else
+            {
+                noChecked64 = "checked='checked'";
+            }
+
+            var aldDate = Model.ApplicationLiveDate.HasValue
+                                ? Model.ApplicationLiveDate.Value.ToString("MM/dd/yyyy") : null;
+
+            var ardDate = Model.ApplicationRenewalDate.HasValue
+            ? Model.ApplicationRenewalDate.Value.ToString("MM/dd/yyyy") : null;
+            <div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Application</label>
+                            <input type="text" class="form-control" id="txtApp" maxlength="100" value="@Model.Application">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Description</label>
+                            <input type="text" class="form-control" id="txtDesc" maxlength="200"
+                                   value="@Model.Description">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Version</label>
+                            <input type="text" class="form-control" id="txtVer" maxlength="50" value="@Model.Version">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Vendor</label>
+                            <input type="text" class="form-control" id="txtVen" maxlength="200"
+                                   value="@Model.Vendor">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Vendor POC</label>
+                            <input type="text" class="form-control" id="txtVenPOC" maxlength="200"
+                                   value="@Model.VendorPOC">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Vendor Phone</label>
+                            <input type="text" class="form-control" id="txtVenPhone" maxlength="50"
+                                   value="@Model.VendorPhone">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Website URL</label>
+                            <input type="text" class="form-control" id="txtWebURL"
+                                   value="@Model.WebsiteURL" maxlength="200">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">ABC ID</label>
+                            <input type="text" class="form-control" id="txtABC" maxlength="50"
+                                   value="@Model.ABCID">
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Remedy Group Name</label>
+                            <input type="text" class="form-control" id="txtRgn" maxlength="100"
+                                   value="@Model.RemedyGroupName">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group label-floating">
+                            <label class="control-label">APP Server</label>
+                            <input type="text" class="form-control" id="txtAppServer" readonly="readonly"
+                                   value="@Model.APPServerText" maxlength="100">
+                            <input type="hidden" id="txtServerId" value="@Model.AppServerId" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group label-floating">
+                            <button class="btn btn-facebook"
+                                    style="padding: 5px 5px;"
+                                    title="Get Server List"
+                                    id="btnServerSearch">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Application Layer</label>
+                            @Html.DropDownListFor(x => x.ApplicationLayer,
+                                            new List<SelectListItem>{new SelectListItem{Text="",Value="0"},
+                                            //new SelectListItem{Text="Layer 1",Value="Layer 1"},
+                                            new SelectListItem{Text="Layer 4",Value="Layer 4"},
+                                            new SelectListItem{Text="Layer4",Value="Layer4"},
+                                            //new SelectListItem{Text="Layer 4 + Manual",Value="Layer 4 + Manual"},
+                                            new SelectListItem{Text="Layer 5",Value="Layer 5"},
+                                            new SelectListItem{Text="Layer5",Value="Layer5"},
+                                            new SelectListItem{Text="Layer 5 - Manual Install",Value="Layer 5 - Manual Install"},
+                                            //new SelectListItem{Text="CLE Layer 5",Value="CLE Layer 5"},
+                                            new SelectListItem{Text="Pending Layer 5",Value="Pending Layer 5"},
+                                            new SelectListItem{Text="Layer 4/5",Value="Layer 4/5"},
+                                            new SelectListItem{Text="apps",Value="apps"}
+                                            },
+                                            new { @class = "form-control", @id = "ddlLayerTypes" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Layer Location</label>
+                            <input type="text" class="form-control" id="txtllo" maxlength="100" value="@Model.Layer5Location">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">SAT Name</label>
+                            <input type="text" class="form-control" id="txtSat" maxlength="200" value="@Model.SATName">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+
+
+                            <div class="form-group label-floating">
+                                <label class="control-label">License Required</label>
+                                <input type="radio" id="rdYes" name="rdLR" value="yes" style="width: 20px" @yesCheckedLicType />Yes &nbsp;
+                                <input type="radio" id="rdNo" name="rdLR" value="no" style="width: 20px" @noCheckedLicType>No
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group label-floating">
+                            <label class="control-label">License / Serial #</label>
+                            <input type="text" class="form-control" id="txtLci"
+                                   value="@Model.LicenseInformation" maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+
+
+                            <div class="form-group label-floating">
+                                <label class="control-label">Windows 10 32 bit Tested</label>
+                                <input type="radio" id="rdYes" name="rdW10T" value="yes" style="width: 20px" @yesCheckedW32 />Yes &nbsp;
+                                <input type="radio" id="rdNo" name="rdW10T" value="no" style="width: 20px" @noCheckedW32>No
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Windows 10 64 bit Tested</label>
+                                <input type="radio" id="rdYes" name="rdW1064T" value="yes" style="width: 20px" @yesChecked64 />Yes &nbsp;
+                                <input type="radio" id="rdNo" name="rdW1064T" value="no" style="width: 20px" @noChecked64>No
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Primary Support</label>
+                            <input type="text" class="form-control" id="txtPS" maxlength="100"
+                                   value="@Model.RADPOC">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Secondary Support</label>
+                            <input type="text" class="form-control" id="txtSS"
+                                   value="@Model.SecondarySupport" maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group label-floating">
+                            <label class="control-label">BAO Info</label>
+                            <input type="text" class="form-control" id="txtBpc" maxlength="100"
+                                   readonly="readonly" value="@Model.BPInfo">
+                            <input type="hidden" id="txtAppBPCId" value="@Model.BAOId" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group label-floating">
+                            <button class="btn btn-facebook"
+                                    style="padding: 5px 5px;"
+                                    title="Get BP Info"
+                                    id="btnBAOSearch">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Application Live Date</label>
+                            <input type="text" id="txtAld" maxlength="10" name="txtAld"
+                                   value="@aldDate"
+                                   class="form-control input-small" style="margin-left: 0px;" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Application Renewal Date</label>
+                            <input type="text" id="txtArd" maxlength="10" name="txtArd" value="@ardDate"
+                                   class="form-control input-small" style="margin-left: 0px;" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Application Entity</label>
+                            @Html.DropDownListFor(x => x.HospitalApplication, Model.ApplicationEntities,
+                                            new { @class = "form-control", @id = "ddlHospitalApp" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Status Type</label>
+                            @Html.DropDownListFor(x => x.StatusTypeId, Model.StatusTypes,
+                                            new { @class = "form-control", @id = "ddlStatusType" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Known Issues</label>
+                            <input type="text" class="form-control" id="txtKni"
+                                   value="@Model.KnownIssues" maxlength="255">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Comments</label>
+                                @Html.TextArea("txtComment", @Model.Comments, new { rows = 10, @class = "form-control TextArea" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="hdnHiradNew" value="@Model.HiradNew" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="btnCancel ">Cancel</button>
+                        <button type="button" class="btn btn-primary pull-right" id="btnAppUpdate">Update</button>
+                    </div>
+                </div>
+
+
+                <div class="clearfix"></div>
+
+                <!--Close div-->
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@* All the required js for this corresponding page should be added here  *@
+@section scripts{
+    @Scripts.Render("~/bundles/dataTableJs")
+    @Scripts.Render("~/bundles/appsJs")
+
+    <script>
+        //Dom Ready
+        $(function () {
+
+
+        });
+    </script>
+}

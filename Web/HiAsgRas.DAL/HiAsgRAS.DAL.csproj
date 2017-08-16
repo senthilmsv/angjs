@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6EE8D3C0-7FDD-45C7-B2DD-0131E3CAFB83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HiAsgRAS.DAL</RootNamespace>
+    <AssemblyName>HiAsgRas.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityModels\ApplicationEntity.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\ApplicationInfomation.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\Audit.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\BAOInfo.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\BAOSearch_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\ExceptionLog.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetAllDBLogStatusByLastRun_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetAllLogDetailsByServer_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetAllServerLogStatusByLastRun_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetAllWebsiteLogStatusByLastRun_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetAppRenewalDate_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetClientAppDetailsById_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetDBDetailsById_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetRenewalDetail_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetServerLogStatusByDate_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetSharedNWPathDetails_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\GetWebAppDetailsById_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiDashEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HiDashEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiDashEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiDashEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HiDashEntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradApp.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradAppListSearch_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradDbList_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradDbMonitor.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradDbMonitorLog.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradServer.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradServerListSearch_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradServerLog.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradServerLogStatus_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradWeb.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradWebAppListSearch_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\HiradWebLog.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\LayerInfo.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\RenewalDetail.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\SharedPath.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\Split_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\StatusType.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\UserDetail.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModels\UserSearch_Result.cs">
+      <DependentUpon>HiDashEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\ContextManager.cs" />
+    <Compile Include="Interfaces\IApplicationInformationRepository.cs" />
+    <Compile Include="Interfaces\IBAOInfoRepository.cs" />
+    <Compile Include="Interfaces\IHiradAppRepository.cs" />
+    <Compile Include="Interfaces\IHiradDbMonitorLogRepository.cs" />
+    <Compile Include="Interfaces\IHiradDbMonitorRepository.cs" />
+    <Compile Include="Interfaces\IHiradServerLogRepository.cs" />
+    <Compile Include="Interfaces\IHiradServerRepository.cs" />
+    <Compile Include="Interfaces\IHiradWebLogRepository.cs" />
+    <Compile Include="Interfaces\IHiradWebRepository.cs" />
+    <Compile Include="Interfaces\IApplicationEntityRepository.cs" />
+    <Compile Include="Interfaces\ILayerInfoRepository.cs" />
+    <Compile Include="Interfaces\IRenewalRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRepositoryContext.cs" />
+    <Compile Include="Interfaces\IServerDecommissionRepository.cs" />
+    <Compile Include="Interfaces\ISharedPathRepository.cs" />
+    <Compile Include="Interfaces\IStatusTypeRepository.cs" />
+    <Compile Include="Interfaces\IUserDetailRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationInformationRepository.cs" />
+    <Compile Include="Repositories\BAOInfoRepository.cs" />
+    <Compile Include="Repositories\BaseRepositoryContext.cs" />
+    <Compile Include="Repositories\HiradAppRepository.cs" />
+    <Compile Include="Repositories\HiradDbMonitorLogRepository.cs" />
+    <Compile Include="Repositories\HiradDbMonitorRepository.cs" />
+    <Compile Include="Repositories\HiradServerLogRepository.cs" />
+    <Compile Include="Repositories\HiradServerRepository.cs" />
+    <Compile Include="Repositories\HiradWebLogRepository.cs" />
+    <Compile Include="Repositories\HiradWebRepository.cs" />
+    <Compile Include="Repositories\ApplicationEntityRepository.cs" />
+    <Compile Include="Repositories\LayerInfoRepository.cs" />
+    <Compile Include="Repositories\RenewalRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\ServerDecommissionRepository.cs" />
+    <Compile Include="Repositories\SharedPathRepository.cs" />
+    <Compile Include="Repositories\StatusTypeRepository.cs" />
+    <Compile Include="Repositories\UserDetailRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HiAsgRAS.Common\HiAsgRAS.Common.csproj">
+      <Project>{d4220646-e7c7-4901-aaec-e80150086fe2}</Project>
+      <Name>HiAsgRAS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiAsgRAS.ViewModel\HiAsgRAS.ViewModel.csproj">
+      <Project>{3cc74d4d-1976-4028-b736-115d05c6dc11}</Project>
+      <Name>HiAsgRAS.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="EntityModels\HiDashEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HiDashEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityModels\HiDashEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HiDashEntityModel.edmx</DependentUpon>
+      <LastGenOutput>HiDashEntityModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityModels\HiDashEntityModel.edmx.diagram">
+      <DependentUpon>HiDashEntityModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityModels\HiDashEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HiDashEntityModel.edmx</DependentUpon>
+      <LastGenOutput>HiDashEntityModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

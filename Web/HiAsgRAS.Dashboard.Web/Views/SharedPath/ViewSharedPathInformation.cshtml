@@ -1,0 +1,98 @@
+﻿@model HiAsgRAS.ViewModel.SharedPathModel
+
+<input type="hidden" id="hdnSaveSharedPathUrl" value="@Url.Action("UpdateSharedPathList", "SharedPath")" />
+<input type="hidden" id="hdnSharedPathAction" value="@Model.ActionMode" />
+<input type="hidden" id="hdnSelectedRowId" value="@Model.Id" />
+<input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" />
+<input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+<input type="hidden" id="uSearchBAOUrl" value="@Url.Action("SearchBAOInformation", "HiradApp")" />
+<input type="hidden" id="uSearchBAOList" value="@Url.Action("GetBAOList", "BAOInfo")" />
+
+<div class="card">
+    <div class="card-header" data-background-color="green">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <i class="fa fa-share-square" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Shared Network Path</h4>
+
+    </div>
+    <div class="card-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Name</label>
+                            <input type="text" class="form-control" id="txtName" maxlength="50" value="@Model.Name">
+
+                        </div>
+                    </div>
+                  
+            <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Server</label>
+                            @Html.DropDownListFor(x => x.AppServerId, Model.AppServers,
+                                            new { @class = "form-control", @id = "ddlServers" })
+                        </div>
+                    </div>   
+   <div class="col-md-3">
+                        <div class="form-group label-floating">
+                            <label class="control-label">BAO Info</label>
+                            <input type="text" class="form-control" id="txtBpc" maxlength="100"
+                                   readonly="readonly" value="@Model.BAOwnerPrimary">
+                            <input type="hidden" id="txtAppBPCId" value="@Model.BAOId" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group label-floating">
+                            <button class="btn btn-facebook"
+                                    style="padding: 5px 5px;"
+                                    title="Get BP Info"
+                                    id="btnBAOSearch">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>      
+                </div>
+             
+           <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Path</label>
+                            <input type="text" class="form-control" id="txtPath" value="@Model.Path">
+
+                        </div>
+                    </div>
+                  
+                 
+                   
+                </div>
+   <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Comments</label>
+                                @Html.TextArea("txtComment", @Model.Comments, new { rows = 10, @class = "form-control TextArea" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="btnCancel ">Cancel</button>
+                        <button type="button" class="btn btn-primary pull-right" id="btnSharedPathUpdate">Update</button>
+                    </div>
+                </div>
+
+
+                <div class="clearfix"></div>
+
+                <!--Close div-->
+            </div>
+        }
+    </div>
+</div>
+

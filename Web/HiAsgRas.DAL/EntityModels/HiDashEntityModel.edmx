@@ -1,0 +1,2707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HiAsgRAS.DAL.EntityModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationInfomation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="ApplicationType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="255" />
+          <Property Name="ApplicationInformation" Type="varchar" MaxLength="200" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Audits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="250" />
+          <Property Name="State" Type="nvarchar" MaxLength="25" />
+          <Property Name="RecordID" Type="varchar" MaxLength="20" />
+          <Property Name="OldData" Type="varchar(max)" />
+          <Property Name="NewData" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BAOInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BAOwnerPrimary" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BAPhonePrimary" Type="varchar" MaxLength="20" />
+          <Property Name="BAEmailPrimary" Type="varchar" MaxLength="100" />
+          <Property Name="BAODeptPrimary" Type="varchar" MaxLength="50" />
+          <Property Name="BAOwnerSecondary" Type="varchar" MaxLength="100" />
+          <Property Name="BAPhoneSecondary" Type="varchar" MaxLength="20" />
+          <Property Name="BAEmailSecondary" Type="varchar" MaxLength="100" />
+          <Property Name="BAODeptSecondary" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ExceptionLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="User" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Logger" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Exception" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="HiradApp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Application" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Version" Type="varchar" MaxLength="50" />
+          <Property Name="Vendor" Type="varchar" MaxLength="200" />
+          <Property Name="VendorPOC" Type="varchar" MaxLength="200" />
+          <Property Name="VendorPhone" Type="varchar" MaxLength="50" />
+          <Property Name="WebsiteURL" Type="varchar" MaxLength="200" />
+          <Property Name="ABCID" Type="varchar" MaxLength="50" />
+          <Property Name="RemedyGroupName" Type="varchar" MaxLength="100" />
+          <Property Name="Server" Type="int" />
+          <Property Name="APPServerName" Type="varchar" MaxLength="100" />
+          <Property Name="DBServerName" Type="varchar" MaxLength="100" />
+          <Property Name="ApplicationLayer" Type="varchar" MaxLength="100" />
+          <Property Name="SATName" Type="varchar" MaxLength="200" />
+          <Property Name="Layer5Location" Type="varchar" MaxLength="200" />
+          <Property Name="LicenseType" Type="varchar" MaxLength="100" />
+          <Property Name="LicenseInformation" Type="varchar" MaxLength="200" />
+          <Property Name="Windows7Approved" Type="char" MaxLength="5" />
+          <Property Name="Windows7InstallStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Windows7Remediation Plan" Type="varchar" MaxLength="600" />
+          <Property Name="Windows7Business Approval" Type="varchar" MaxLength="50" />
+          <Property Name="ECSCertified" Type="varchar" MaxLength="50" />
+          <Property Name="Windows10Approved" Type="varchar" MaxLength="50" />
+          <Property Name="Windows7_64Approved" Type="varchar" MaxLength="50" />
+          <Property Name="Windows10_64Approved" Type="varchar" MaxLength="50" />
+          <Property Name="Documentation" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentationDate" Type="datetime" />
+          <Property Name="Categories" Type="varchar" MaxLength="100" />
+          <Property Name="RADPOC" Type="varchar" MaxLength="100" />
+          <Property Name="SecondarySupport" Type="varchar" MaxLength="100" />
+          <Property Name="ApplicationDomain" Type="varchar" MaxLength="100" />
+          <Property Name="BPContact" Type="varchar" MaxLength="200" />
+          <Property Name="ApplicationLiveDate" Type="datetime" />
+          <Property Name="Layer4SR#" Type="varchar" MaxLength="100" />
+          <Property Name="Layer4Status" Type="varchar" MaxLength="100" />
+          <Property Name="HospitalApplication" Type="varchar" MaxLength="50" />
+          <Property Name="KnownIssues" Type="varchar" MaxLength="255" />
+          <Property Name="Comments" Type="ntext" />
+          <Property Name="Windows1032Tested" Type="char" MaxLength="5" />
+          <Property Name="Windows1064Tested" Type="char" MaxLength="5" />
+          <Property Name="BPInfo" Type="varchar" MaxLength="100" />
+          <Property Name="ApplicationRenewalDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HiradNew" Type="bit" />
+          <Property Name="BAOId" Type="int" />
+          <Property Name="ApplicationLayerId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="StatusTypeId" Type="int" />
+          <Property Name="StatusTypeChangedOn" Type="datetime" />
+          <Property Name="AppServerId" Type="int" />
+          <Property Name="DbServerId" Type="int" />
+        </EntityType>
+        <EntityType Name="HiradDbMonitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Application" Type="varchar" MaxLength="50" />
+          <Property Name="DBServer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DbName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" />
+          <Property Name="Pwd" Type="varchar" MaxLength="50" />
+          <Property Name="IsMonitor" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="StatusTypeId" Type="int" />
+          <Property Name="StatusTypeChangedOn" Type="datetime" />
+          <Property Name="DbServerId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HiradDbMonitorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DbMonitorId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="ErrorDescription" Type="varchar" MaxLength="500" />
+          <Property Name="MonitoredAt" Type="datetime" />
+          <Property Name="LoggedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HiradServer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="100" />
+          <Property Name="UnitSize" Type="char" MaxLength="5" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="100" />
+          <Property Name="AssetTag" Type="varchar" MaxLength="100" />
+          <Property Name="PO#" Type="varchar" MaxLength="100" />
+          <Property Name="Field7" Type="varchar" MaxLength="100" />
+          <Property Name="ABCId" Type="varchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="varchar" MaxLength="100" />
+          <Property Name="SupportStaff" Type="varchar" MaxLength="200" />
+          <Property Name="Model" Type="varchar" MaxLength="100" />
+          <Property Name="Platform" Type="varchar" MaxLength="100" />
+          <Property Name="BuildVersion" Type="varchar" MaxLength="100" />
+          <Property Name="Configuration" Type="varchar" MaxLength="100" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="ILOIPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="IPAddressOther" Type="varchar" MaxLength="50" />
+          <Property Name="ApplicationUse" Type="varchar" MaxLength="200" />
+          <Property Name="Function" Type="varchar" MaxLength="100" />
+          <Property Name="Processor" Type="varchar" MaxLength="100" />
+          <Property Name="TotalCores" Type="float" />
+          <Property Name="Storage" Type="varchar" MaxLength="100" />
+          <Property Name="HDDConfiguration" Type="varchar" MaxLength="200" />
+          <Property Name="RAM" Type="varchar" MaxLength="50" />
+          <Property Name="WINTELPatchSchedule" Type="varchar" MaxLength="200" />
+          <Property Name="TSMInstalled" Type="char" MaxLength="5" />
+          <Property Name="TSMConfigurationPath" Type="varchar" MaxLength="255" />
+          <Property Name="TSMBackupWindow" Type="varchar" MaxLength="255" />
+          <Property Name="TSMTicket#" Type="varchar" MaxLength="100" />
+          <Property Name="IPRequestTicket#" Type="varchar" MaxLength="100" />
+          <Property Name="CableRunTicket#" Type="varchar" MaxLength="100" />
+          <Property Name="PortActivationTicket#" Type="varchar" MaxLength="100" />
+          <Property Name="Rack&amp;Stack#" Type="varchar" MaxLength="100" />
+          <Property Name="BuildTicket" Type="varchar" MaxLength="100" />
+          <Property Name="MoveRFC" Type="varchar" MaxLength="100" />
+          <Property Name="TivoliMonitoringLicenseApproval#" Type="varchar" MaxLength="100" />
+          <Property Name="InstallTivoliEnhancedProfile#" Type="varchar" MaxLength="100" />
+          <Property Name="IBMToolsSRM&amp;Parity" Type="varchar" MaxLength="100" />
+          <Property Name="QATicket#" Type="varchar" MaxLength="100" />
+          <Property Name="DecommTicket#" Type="varchar" MaxLength="100" />
+          <Property Name="Rack&amp;StackDate" Type="datetime" />
+          <Property Name="BuildDate" Type="varchar" MaxLength="100" />
+          <Property Name="PatchFolderInstall" Type="varchar" MaxLength="100" />
+          <Property Name="TSMexeInstall" Type="varchar" MaxLength="100" />
+          <Property Name="ArrayConfig" Type="varchar" MaxLength="100" />
+          <Property Name="NewServerForm" Type="varchar" MaxLength="100" />
+          <Property Name="SCALLANBKUP" Type="varchar" MaxLength="100" />
+          <Property Name="ISSDatabaseForm" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedAssetCenter" Type="varchar" MaxLength="100" />
+          <Property Name="QASubmmissionDate" Type="datetime" />
+          <Property Name="QAPassDate" Type="datetime" />
+          <Property Name="Comments" Type="ntext" />
+          <Property Name="VMHost" Type="varchar" MaxLength="100" />
+          <Property Name="HiradNew" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="LastBootTime" Type="datetime" />
+          <Property Name="Domain" Type="varchar" MaxLength="100" />
+          <Property Name="IsMonitor" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="StatusTypeId" Type="int" />
+          <Property Name="StatusTypeChangedOn" Type="datetime" />
+          <Property Name="NewServerId" Type="int" />
+        </EntityType>
+        <EntityType Name="HiradServerLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServerId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="ErrorDescription" Type="varchar" MaxLength="500" />
+          <Property Name="MonitoredAt" Type="datetime" />
+          <Property Name="AvblRAM" Type="varchar" MaxLength="100" />
+          <Property Name="AvblHDDSpace" Type="varchar" MaxLength="100" />
+          <Property Name="LoggedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HiradWeb">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebFolder" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="WebSite" Type="varchar" MaxLength="255" />
+          <Property Name="WebStat" Type="varchar" MaxLength="255" />
+          <Property Name="WebSiteType" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="ABCID" Type="varchar" MaxLength="50" />
+          <Property Name="AppServer" Type="varchar" MaxLength="100" />
+          <Property Name="DBServer" Type="varchar" MaxLength="100" />
+          <Property Name="RemedyGroupName" Type="varchar" MaxLength="100" />
+          <Property Name="PrimayContact" Type="varchar" MaxLength="100" />
+          <Property Name="SecondaryContact" Type="varchar" MaxLength="100" />
+          <Property Name="BPContact" Type="varchar" MaxLength="100" />
+          <Property Name="BPDept" Type="varchar" MaxLength="100" />
+          <Property Name="BPPhone" Type="nvarchar" MaxLength="255" />
+          <Property Name="BPEmail" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ProdSupportAgreement" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HiradNew" Type="bit" />
+          <Property Name="BAOId" Type="int" />
+          <Property Name="DBName" Type="varchar" MaxLength="50" />
+          <Property Name="IsMonitor" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="StatusTypeId" Type="int" />
+          <Property Name="StatusTypeChangedOn" Type="datetime" />
+          <Property Name="AppServerId" Type="int" />
+          <Property Name="DbServerId" Type="int" />
+          <Property Name="IsRenewal" Type="bit" />
+          <Property Name="ApplicationRenewalDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HiradWebLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="ErrorDescription" Type="varchar" MaxLength="500" />
+          <Property Name="MonitoredAt" Type="datetime" />
+          <Property Name="LoggedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LayerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppLayerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LayerLocation" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RenewalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="IsRenewalRequired" Type="bit" />
+          <Property Name="UniqueId" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SharedPath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AppServerId" Type="int" />
+          <Property Name="Path" Type="ntext" Nullable="false" />
+          <Property Name="BAOId" Type="int" />
+          <Property Name="Comments" Type="ntext" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusText" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="1" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NUID" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="char" MaxLength="3" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_HiradDbMonitor_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="HiradDbMonitor" Type="Self.HiradDbMonitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradDbMonitor">
+              <PropertyRef Name="StatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradDbMonitorLog_HiradDbMonitor">
+          <End Role="HiradDbMonitor" Type="Self.HiradDbMonitor" Multiplicity="1" />
+          <End Role="HiradDbMonitorLog" Type="Self.HiradDbMonitorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiradDbMonitor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradDbMonitorLog">
+              <PropertyRef Name="DbMonitorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradServer_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="HiradServer" Type="Self.HiradServer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradServer">
+              <PropertyRef Name="StatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradServerLog_ServerId">
+          <End Role="HiradServer" Type="Self.HiradServer" Multiplicity="1" />
+          <End Role="HiradServerLog" Type="Self.HiradServerLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiradServer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradServerLog">
+              <PropertyRef Name="ServerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradWeb_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="HiradWeb" Type="Self.HiradWeb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradWeb">
+              <PropertyRef Name="StatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradWebLog_WebId">
+          <End Role="HiradWeb" Type="Self.HiradWeb" Multiplicity="1" />
+          <End Role="HiradWebLog" Type="Self.HiradWebLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiradWeb">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradWebLog">
+              <PropertyRef Name="WebId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SharedPath_BAOInfo">
+          <End Role="BAOInfo" Type="Self.BAOInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SharedPath" Type="Self.SharedPath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAOInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SharedPath">
+              <PropertyRef Name="BAOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BAOSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimaryOwnerName" Type="varchar" Mode="In" />
+          <Parameter Name="PrimaryOwnerDept" Type="varchar" Mode="In" />
+          <Parameter Name="SecondaryOwnerName" Type="varchar" Mode="In" />
+          <Parameter Name="SecondaryOwnerDept" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ClearLogData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LogDays" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllDBLogStatusByLastRun" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllLogDetailsByServer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ServerId" Type="int" Mode="In" />
+          <Parameter Name="SystemName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllServerLogStatusByLastRun" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllWebsiteLogStatusByLastRun" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAppRenewalDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DayCount" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="GetClientAppDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AppId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDBDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DbId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRenewalDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetServerLogStatusByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LoggedAt" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetSharedNWPathDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SharedPathId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWebAppDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WebId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="HiradAppListSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Application" Type="varchar" Mode="In" />
+          <Parameter Name="APPServerName" Type="varchar" Mode="In" />
+          <Parameter Name="Vendor" Type="varchar" Mode="In" />
+          <Parameter Name="ApplicationLayer" Type="varchar" Mode="In" />
+          <Parameter Name="WebsiteURL" Type="varchar" Mode="In" />
+          <Parameter Name="ABCID" Type="varchar" Mode="In" />
+          <Parameter Name="SATName" Type="varchar" Mode="In" />
+          <Parameter Name="AppRenewalDtFrom" Type="datetime" Mode="In" />
+          <Parameter Name="AppRenewalDtTo" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="HiradDbList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="HiradServerListSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SystemName" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="IPAddress" Type="varchar" Mode="In" />
+          <Parameter Name="Processor" Type="varchar" Mode="In" />
+          <Parameter Name="Platform" Type="varchar" Mode="In" />
+          <Parameter Name="ABCId" Type="varchar" Mode="In" />
+          <Parameter Name="CostCenter" Type="varchar" Mode="In" />
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HiradServerLogStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ServerId" Type="int" Mode="In" />
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="HiradWebAppListSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WebFolder" Type="varchar" Mode="In" />
+          <Parameter Name="Active" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="RemedyGroupName" Type="varchar" Mode="In" />
+          <Parameter Name="WebSite" Type="varchar" Mode="In" />
+          <Parameter Name="WebStat" Type="varchar" Mode="In" />
+          <Parameter Name="ABCID" Type="varchar" Mode="In" />
+          <Parameter Name="AppServer" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertRenewalDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicationId" Type="int" Mode="In" />
+          <Parameter Name="UniqueId" Type="varchar" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="String" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Delimiter" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="items" Type="varchar(max)" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="UpdateMonitorInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ids" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateRenewalDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IsRenewalRequired" Type="bit" Mode="In" />
+          <Parameter Name="UniqueId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateServerInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ids" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="newServerId" Type="int" Mode="In" />
+          <Parameter Name="oldServerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UserSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="NUID" Type="varchar" Mode="In" />
+          <Parameter Name="UserType" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="HiAsgRASDALEntityModelsStoreContainer">
+          <EntitySet Name="ApplicationEntity" EntityType="Self.ApplicationEntity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationInfomation" EntityType="Self.ApplicationInfomation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audits" EntityType="Self.Audits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BAOInfo" EntityType="Self.BAOInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExceptionLogs" EntityType="Self.ExceptionLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradApp" EntityType="Self.HiradApp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradDbMonitor" EntityType="Self.HiradDbMonitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradDbMonitorLog" EntityType="Self.HiradDbMonitorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradServer" EntityType="Self.HiradServer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradServerLog" EntityType="Self.HiradServerLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradWeb" EntityType="Self.HiradWeb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiradWebLog" EntityType="Self.HiradWebLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LayerInfo" EntityType="Self.LayerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RenewalDetail" EntityType="Self.RenewalDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SharedPath" EntityType="Self.SharedPath" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusType" EntityType="Self.StatusType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HiradDbMonitor_StatusType" Association="Self.FK_HiradDbMonitor_StatusType">
+            <End Role="StatusType" EntitySet="StatusType" />
+            <End Role="HiradDbMonitor" EntitySet="HiradDbMonitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradDbMonitorLog_HiradDbMonitor" Association="Self.FK_HiradDbMonitorLog_HiradDbMonitor">
+            <End Role="HiradDbMonitor" EntitySet="HiradDbMonitor" />
+            <End Role="HiradDbMonitorLog" EntitySet="HiradDbMonitorLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradServer_StatusType" Association="Self.FK_HiradServer_StatusType">
+            <End Role="StatusType" EntitySet="StatusType" />
+            <End Role="HiradServer" EntitySet="HiradServer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradServerLog_ServerId" Association="Self.FK_HiradServerLog_ServerId">
+            <End Role="HiradServer" EntitySet="HiradServer" />
+            <End Role="HiradServerLog" EntitySet="HiradServerLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradWeb_StatusType" Association="Self.FK_HiradWeb_StatusType">
+            <End Role="StatusType" EntitySet="StatusType" />
+            <End Role="HiradWeb" EntitySet="HiradWeb" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradWebLog_WebId" Association="Self.FK_HiradWebLog_WebId">
+            <End Role="HiradWeb" EntitySet="HiradWeb" />
+            <End Role="HiradWebLog" EntitySet="HiradWebLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SharedPath_BAOInfo" Association="Self.FK_SharedPath_BAOInfo">
+            <End Role="BAOInfo" EntitySet="BAOInfo" />
+            <End Role="SharedPath" EntitySet="SharedPath" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HiAsgRAS.DAL.EntityModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Split_Result">
+          <Property Name="items" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="ApplicationEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationInfomation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationInformation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="RecordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OldData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BAOInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BAOwnerPrimary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BAPhonePrimary" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BAEmailPrimary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BAODeptPrimary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BAOwnerSecondary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BAPhoneSecondary" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BAEmailSecondary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BAODeptSecondary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SharedPaths" Relationship="Self.FK_SharedPath_BAOInfo" FromRole="BAOInfo" ToRole="SharedPath" />
+        </EntityType>
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logger" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exception" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HiradApp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Application" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPOC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebsiteURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ABCID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RemedyGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Server" Type="Int32" />
+          <Property Name="APPServerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DBServerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationLayer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SATName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Layer5Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseInformation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Windows7Approved" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Windows7InstallStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Windows7Remediation_Plan" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="Windows7Business_Approval" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ECSCertified" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Windows10Approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Windows7_64Approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Windows10_64Approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Documentation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentationDate" Type="DateTime" Precision="3" />
+          <Property Name="Categories" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RADPOC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SecondarySupport" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationDomain" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BPContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationLiveDate" Type="DateTime" Precision="3" />
+          <Property Name="Layer4SR_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Layer4Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HospitalApplication" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KnownIssues" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Windows1032Tested" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Windows1064Tested" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="BPInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationRenewalDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HiradNew" Type="Boolean" />
+          <Property Name="BAOId" Type="Int32" />
+          <Property Name="ApplicationLayerId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="StatusTypeId" Type="Int32" />
+          <Property Name="StatusTypeChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="AppServerId" Type="Int32" />
+          <Property Name="DbServerId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="HiradDbMonitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Application" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DBServer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DbName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMonitor" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="StatusTypeId" Type="Int32" />
+          <Property Name="StatusTypeChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="DbServerId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusType" Relationship="Self.FK_HiradDbMonitor_StatusType" FromRole="HiradDbMonitor" ToRole="StatusType" />
+          <NavigationProperty Name="HiradDbMonitorLogs" Relationship="Self.FK_HiradDbMonitorLog_HiradDbMonitor" FromRole="HiradDbMonitor" ToRole="HiradDbMonitorLog" />
+        </EntityType>
+        <EntityType Name="HiradDbMonitorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DbMonitorId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MonitoredAt" Type="DateTime" Precision="3" />
+          <Property Name="LoggedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HiradDbMonitor" Relationship="Self.FK_HiradDbMonitorLog_HiradDbMonitor" FromRole="HiradDbMonitorLog" ToRole="HiradDbMonitor" />
+        </EntityType>
+        <EntityType Name="HiradServer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UnitSize" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AssetTag" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PO_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Field7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ABCId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CostCenter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SupportStaff" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Platform" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BuildVersion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Configuration" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ILOIPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddressOther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationUse" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Function" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Processor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TotalCores" Type="Double" />
+          <Property Name="Storage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HDDConfiguration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WINTELPatchSchedule" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TSMInstalled" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="TSMConfigurationPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TSMBackupWindow" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TSMTicket_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IPRequestTicket_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CableRunTicket_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PortActivationTicket_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rack_Stack_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BuildTicket" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MoveRFC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TivoliMonitoringLicenseApproval_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InstallTivoliEnhancedProfile_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IBMToolsSRM_Parity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QATicket_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DecommTicket_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rack_StackDate" Type="DateTime" Precision="3" />
+          <Property Name="BuildDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PatchFolderInstall" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TSMexeInstall" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ArrayConfig" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NewServerForm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCALLANBKUP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ISSDatabaseForm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedAssetCenter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QASubmmissionDate" Type="DateTime" Precision="3" />
+          <Property Name="QAPassDate" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VMHost" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HiradNew" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastBootTime" Type="DateTime" Precision="3" />
+          <Property Name="Domain" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsMonitor" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="StatusTypeId" Type="Int32" />
+          <Property Name="StatusTypeChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="NewServerId" Type="Int32" />
+          <NavigationProperty Name="StatusType" Relationship="Self.FK_HiradServer_StatusType" FromRole="HiradServer" ToRole="StatusType" />
+          <NavigationProperty Name="HiradServerLogs" Relationship="Self.FK_HiradServerLog_ServerId" FromRole="HiradServer" ToRole="HiradServerLog" />
+        </EntityType>
+        <EntityType Name="HiradServerLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServerId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MonitoredAt" Type="DateTime" Precision="3" />
+          <Property Name="AvblRAM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AvblHDDSpace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LoggedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HiradServer" Relationship="Self.FK_HiradServerLog_ServerId" FromRole="HiradServerLog" ToRole="HiradServer" />
+        </EntityType>
+        <EntityType Name="HiradWeb">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebFolder" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WebSite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WebStat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WebSiteType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ABCID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppServer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DBServer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RemedyGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PrimayContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SecondaryContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BPContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BPDept" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BPPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BPEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProdSupportAgreement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HiradNew" Type="Boolean" />
+          <Property Name="BAOId" Type="Int32" />
+          <Property Name="DBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMonitor" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="StatusTypeId" Type="Int32" />
+          <Property Name="StatusTypeChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="AppServerId" Type="Int32" />
+          <Property Name="DbServerId" Type="Int32" />
+          <Property Name="IsRenewal" Type="Boolean" />
+          <Property Name="ApplicationRenewalDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusType" Relationship="Self.FK_HiradWeb_StatusType" FromRole="HiradWeb" ToRole="StatusType" />
+          <NavigationProperty Name="HiradWebLogs" Relationship="Self.FK_HiradWebLog_WebId" FromRole="HiradWeb" ToRole="HiradWebLog" />
+        </EntityType>
+        <EntityType Name="HiradWebLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MonitoredAt" Type="DateTime" Precision="3" />
+          <Property Name="LoggedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HiradWeb" Relationship="Self.FK_HiradWebLog_WebId" FromRole="HiradWebLog" ToRole="HiradWeb" />
+        </EntityType>
+        <EntityType Name="LayerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppLayerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LayerLocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RenewalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="IsRenewalRequired" Type="Boolean" />
+          <Property Name="UniqueId" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SharedPath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppServerId" Type="Int32" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BAOId" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BAOInfo" Relationship="Self.FK_SharedPath_BAOInfo" FromRole="SharedPath" ToRole="BAOInfo" />
+        </EntityType>
+        <EntityType Name="StatusType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HiradDbMonitors" Relationship="Self.FK_HiradDbMonitor_StatusType" FromRole="StatusType" ToRole="HiradDbMonitor" />
+          <NavigationProperty Name="HiradServers" Relationship="Self.FK_HiradServer_StatusType" FromRole="StatusType" ToRole="HiradServer" />
+          <NavigationProperty Name="HiradWebs" Relationship="Self.FK_HiradWeb_StatusType" FromRole="StatusType" ToRole="HiradWeb" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SharedPath_BAOInfo">
+          <End Role="BAOInfo" Type="Self.BAOInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SharedPath" Type="Self.SharedPath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAOInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SharedPath">
+              <PropertyRef Name="BAOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradDbMonitor_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="HiradDbMonitor" Type="Self.HiradDbMonitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradDbMonitor">
+              <PropertyRef Name="StatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradDbMonitorLog_HiradDbMonitor">
+          <End Role="HiradDbMonitor" Type="Self.HiradDbMonitor" Multiplicity="1" />
+          <End Role="HiradDbMonitorLog" Type="Self.HiradDbMonitorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiradDbMonitor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradDbMonitorLog">
+              <PropertyRef Name="DbMonitorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradServer_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="HiradServer" Type="Self.HiradServer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradServer">
+              <PropertyRef Name="StatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradServerLog_ServerId">
+          <End Role="HiradServer" Type="Self.HiradServer" Multiplicity="1" />
+          <End Role="HiradServerLog" Type="Self.HiradServerLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiradServer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradServerLog">
+              <PropertyRef Name="ServerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradWeb_StatusType">
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="HiradWeb" Type="Self.HiradWeb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradWeb">
+              <PropertyRef Name="StatusTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiradWebLog_WebId">
+          <End Role="HiradWeb" Type="Self.HiradWeb" Multiplicity="1" />
+          <End Role="HiradWebLog" Type="Self.HiradWebLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiradWeb">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HiradWebLog">
+              <PropertyRef Name="WebId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationEntities" EntityType="Self.ApplicationEntity" />
+          <EntitySet Name="ApplicationInfomations" EntityType="Self.ApplicationInfomation" />
+          <EntitySet Name="Audits" EntityType="Self.Audit" />
+          <EntitySet Name="BAOInfoes" EntityType="Self.BAOInfo" />
+          <EntitySet Name="ExceptionLogs" EntityType="Self.ExceptionLog" />
+          <EntitySet Name="HiradApps" EntityType="Self.HiradApp" />
+          <EntitySet Name="HiradDbMonitors" EntityType="Self.HiradDbMonitor" />
+          <EntitySet Name="HiradDbMonitorLogs" EntityType="Self.HiradDbMonitorLog" />
+          <EntitySet Name="HiradServers" EntityType="Self.HiradServer" />
+          <EntitySet Name="HiradServerLogs" EntityType="Self.HiradServerLog" />
+          <EntitySet Name="HiradWebs" EntityType="Self.HiradWeb" />
+          <EntitySet Name="HiradWebLogs" EntityType="Self.HiradWebLog" />
+          <EntitySet Name="LayerInfoes" EntityType="Self.LayerInfo" />
+          <EntitySet Name="RenewalDetails" EntityType="Self.RenewalDetail" />
+          <EntitySet Name="SharedPaths" EntityType="Self.SharedPath" />
+          <EntitySet Name="StatusTypes" EntityType="Self.StatusType" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <AssociationSet Name="FK_SharedPath_BAOInfo" Association="Self.FK_SharedPath_BAOInfo">
+            <End Role="BAOInfo" EntitySet="BAOInfoes" />
+            <End Role="SharedPath" EntitySet="SharedPaths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradDbMonitor_StatusType" Association="Self.FK_HiradDbMonitor_StatusType">
+            <End Role="StatusType" EntitySet="StatusTypes" />
+            <End Role="HiradDbMonitor" EntitySet="HiradDbMonitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradDbMonitorLog_HiradDbMonitor" Association="Self.FK_HiradDbMonitorLog_HiradDbMonitor">
+            <End Role="HiradDbMonitor" EntitySet="HiradDbMonitors" />
+            <End Role="HiradDbMonitorLog" EntitySet="HiradDbMonitorLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradServer_StatusType" Association="Self.FK_HiradServer_StatusType">
+            <End Role="StatusType" EntitySet="StatusTypes" />
+            <End Role="HiradServer" EntitySet="HiradServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradServerLog_ServerId" Association="Self.FK_HiradServerLog_ServerId">
+            <End Role="HiradServer" EntitySet="HiradServers" />
+            <End Role="HiradServerLog" EntitySet="HiradServerLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradWeb_StatusType" Association="Self.FK_HiradWeb_StatusType">
+            <End Role="StatusType" EntitySet="StatusTypes" />
+            <End Role="HiradWeb" EntitySet="HiradWebs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiradWebLog_WebId" Association="Self.FK_HiradWebLog_WebId">
+            <End Role="HiradWeb" EntitySet="HiradWebs" />
+            <End Role="HiradWebLog" EntitySet="HiradWebLogs" />
+          </AssociationSet>
+          <FunctionImport Name="Split" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.Split_Result)" IsComposable="true">
+            <Parameter Name="String" Mode="In" Type="String" />
+            <Parameter Name="Delimiter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BAOSearch" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.BAOSearch_Result)">
+            <Parameter Name="PrimaryOwnerName" Mode="In" Type="String" />
+            <Parameter Name="PrimaryOwnerDept" Mode="In" Type="String" />
+            <Parameter Name="SecondaryOwnerName" Mode="In" Type="String" />
+            <Parameter Name="SecondaryOwnerDept" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ClearLogData">
+            <Parameter Name="LogDays" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllDBLogStatusByLastRun" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetAllDBLogStatusByLastRun_Result)" />
+          <FunctionImport Name="GetAllLogDetailsByServer" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetAllLogDetailsByServer_Result)">
+            <Parameter Name="ServerId" Mode="In" Type="Int32" />
+            <Parameter Name="SystemName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllServerLogStatusByLastRun" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetAllServerLogStatusByLastRun_Result)" />
+          <FunctionImport Name="GetAllWebsiteLogStatusByLastRun" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetAllWebsiteLogStatusByLastRun_Result)" />
+          <FunctionImport Name="GetAppRenewalDate" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetAppRenewalDate_Result)">
+            <Parameter Name="DayCount" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="GetClientAppDetailsById" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetClientAppDetailsById_Result)">
+            <Parameter Name="AppId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDBDetailsById" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetDBDetailsById_Result)">
+            <Parameter Name="DbId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRenewalDetail" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetRenewalDetail_Result)" />
+          <FunctionImport Name="GetServerLogStatusByDate" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetServerLogStatusByDate_Result)">
+            <Parameter Name="LoggedAt" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetSharedNWPathDetails" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetSharedNWPathDetails_Result)">
+            <Parameter Name="SharedPathId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWebAppDetailsById" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.GetWebAppDetailsById_Result)">
+            <Parameter Name="WebId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="HiradAppListSearch" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.HiradAppListSearch_Result)">
+            <Parameter Name="Application" Mode="In" Type="String" />
+            <Parameter Name="APPServerName" Mode="In" Type="String" />
+            <Parameter Name="Vendor" Mode="In" Type="String" />
+            <Parameter Name="ApplicationLayer" Mode="In" Type="String" />
+            <Parameter Name="WebsiteURL" Mode="In" Type="String" />
+            <Parameter Name="ABCID" Mode="In" Type="String" />
+            <Parameter Name="SATName" Mode="In" Type="String" />
+            <Parameter Name="AppRenewalDtFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="AppRenewalDtTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HiradDbList" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.HiradDbList_Result)" />
+          <FunctionImport Name="HiradServerListSearch" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.HiradServerListSearch_Result)">
+            <Parameter Name="SystemName" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="IPAddress" Mode="In" Type="String" />
+            <Parameter Name="Processor" Mode="In" Type="String" />
+            <Parameter Name="Platform" Mode="In" Type="String" />
+            <Parameter Name="ABCId" Mode="In" Type="String" />
+            <Parameter Name="CostCenter" Mode="In" Type="String" />
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HiradServerLogStatus" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.HiradServerLogStatus_Result)">
+            <Parameter Name="ServerId" Mode="In" Type="Int32" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HiradWebAppListSearch" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.HiradWebAppListSearch_Result)">
+            <Parameter Name="WebFolder" Mode="In" Type="String" />
+            <Parameter Name="Active" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="RemedyGroupName" Mode="In" Type="String" />
+            <Parameter Name="WebSite" Mode="In" Type="String" />
+            <Parameter Name="WebStat" Mode="In" Type="String" />
+            <Parameter Name="ABCID" Mode="In" Type="String" />
+            <Parameter Name="AppServer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertRenewalDetail">
+            <Parameter Name="ApplicationId" Mode="In" Type="Int32" />
+            <Parameter Name="UniqueId" Mode="In" Type="String" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateMonitorInfo">
+            <Parameter Name="Ids" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateRenewalDetail">
+            <Parameter Name="IsRenewalRequired" Mode="In" Type="Boolean" />
+            <Parameter Name="UniqueId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateServerInfo">
+            <Parameter Name="Ids" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="newServerId" Mode="In" Type="Int32" />
+            <Parameter Name="oldServerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserSearch" ReturnType="Collection(HiAsgRAS.DAL.EntityModels.UserSearch_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="NUID" Mode="In" Type="String" />
+            <Parameter Name="UserType" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="BAOSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="BAPhonePrimary" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BAEmailPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAODeptPrimary" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BAOwnerSecondary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAPhoneSecondary" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BAEmailSecondary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAODeptSecondary" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetAllDBLogStatusByLastRun_Result">
+          <Property Type="Int32" Name="DbMonitorId" Nullable="false" />
+          <Property Type="String" Name="Application" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DbName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DBServerName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ErrorDescription" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="MonitoredAt" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LoggedAt" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetAllLogDetailsByServer_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SystemName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UnitSize" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AssetTag" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PO_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Field7" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ABCId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CostCenter" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SupportStaff" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Platform" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BuildVersion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Configuration" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ILOIPAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="IPAddressOther" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApplicationUse" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Function" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Processor" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="TotalCores" Nullable="true" />
+          <Property Type="String" Name="Storage" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="HDDConfiguration" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WINTELPatchSchedule" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TSMInstalled" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="TSMConfigurationPath" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="TSMBackupWindow" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="TSMTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IPRequestTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CableRunTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PortActivationTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Rack_Stack_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BuildTicket" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MoveRFC" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TivoliMonitoringLicenseApproval_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="InstallTivoliEnhancedProfile_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IBMToolsSRM_Parity" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="QATicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DecommTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Rack_StackDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BuildDate" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PatchFolderInstall" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TSMexeInstall" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ArrayConfig" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NewServerForm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SCALLANBKUP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ISSDatabaseForm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UpdatedAssetCenter" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="QASubmmissionDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="QAPassDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="VMHost" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="HiradNew" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LastBootTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Domain" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsMonitor" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NewServerId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllServerLogStatusByLastRun_Result">
+          <Property Type="Int32" Name="ServerId" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ErrorDescription" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="MonitoredAt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AvblRAM" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AvblHDDSpace" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="LoggedAt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SystemName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="StatusPercent" Nullable="false" />
+          <Property Type="String" Name="HDDConfiguration" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="LastBootTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetAllWebsiteLogStatusByLastRun_Result">
+          <Property Type="Int32" Name="WebId" Nullable="false" />
+          <Property Type="String" Name="WebFolder" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="WebSite" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Active" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PrimayContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondaryContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPDept" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPPhone" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BPEmail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ErrorDescription" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="MonitoredAt" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LoggedAt" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetAppRenewalDate_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Application" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="BAEmailPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAOwnerSecondary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAEmailSecondary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ApplicationRenewalDate" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetClientAppDetailsById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Application" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Version" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="VendorPOC" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="VendorPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WebsiteURL" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ABCID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RemedyGroupName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Server" Nullable="true" />
+          <Property Type="String" Name="APPServerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DBServerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ApplicationLayer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SATName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Layer5Location" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LicenseType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LicenseInformation" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Windows7Approved" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Windows7InstallStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows7Remediation_Plan" Nullable="true" MaxLength="600" />
+          <Property Type="String" Name="Windows7Business_Approval" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ECSCertified" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows10Approved" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows7_64Approved" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows10_64Approved" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Documentation" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DocumentationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Categories" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RADPOC" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondarySupport" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ApplicationDomain" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPContact" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="ApplicationLiveDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Layer4SR_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Layer4Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="HospitalApplication" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KnownIssues" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Windows1032Tested" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Windows1064Tested" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="BPInfo" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ApplicationRenewalDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="HiradNew" Nullable="true" />
+          <Property Type="Int32" Name="BAOId" Nullable="true" />
+          <Property Type="Int32" Name="ApplicationLayerId" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="AppServerId" Nullable="true" />
+          <Property Type="Int32" Name="DbServerId" Nullable="true" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAODeptPrimary" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppServerText" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DbServerText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetDBDetailsById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Application" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DBServer" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DbName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pwd" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsMonitor" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DbServerId" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="StatusText" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SupportStaff" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SystemName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetRenewalDetail_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ApplicationId" Nullable="false" />
+          <Property Type="Boolean" Name="IsRenewalRequired" Nullable="true" />
+          <Property Type="String" Name="UniqueId" Nullable="false" MaxLength="300" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetServerLogStatusByDate_Result">
+          <Property Type="Int32" Name="ServerId" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ErrorDescription" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="MonitoredAt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MonitoredTime" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="AvblRAM" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AvblHDDSpace" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="LoggedAt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SystemName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="StatusPercent" Nullable="false" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetSharedNWPathDetails_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AppServerId" Nullable="true" />
+          <Property Type="String" Name="Path" Nullable="false" MaxLength="Max" />
+          <Property Type="Int32" Name="BAOId" Nullable="true" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AppServerText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetWebAppDetailsById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="WebFolder" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="WebSite" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WebStat" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WebSiteType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Active" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ABCID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppServer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DBServer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RemedyGroupName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PrimayContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondaryContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPDept" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPPhone" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BPEmail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="ProdSupportAgreement" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="HiradNew" Nullable="true" />
+          <Property Type="Int32" Name="BAOId" Nullable="true" />
+          <Property Type="String" Name="DBName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsMonitor" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="AppServerId" Nullable="true" />
+          <Property Type="Int32" Name="DbServerId" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewal" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicationRenewalDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAODeptPrimary" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppServerText" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DbServerText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="HiradAppListSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Application" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Version" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Vendor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="VendorPOC" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="VendorPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WebsiteURL" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ABCID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RemedyGroupName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Server" Nullable="true" />
+          <Property Type="String" Name="APPServerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DBServerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ApplicationLayer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SATName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Layer5Location" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LicenseType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LicenseInformation" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Windows7Approved" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Windows7InstallStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows7Remediation_Plan" Nullable="true" MaxLength="600" />
+          <Property Type="String" Name="Windows7Business_Approval" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ECSCertified" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows10Approved" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows7_64Approved" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Windows10_64Approved" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Documentation" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DocumentationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Categories" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RADPOC" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondarySupport" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ApplicationDomain" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPContact" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="ApplicationLiveDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Layer4SR_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Layer4Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="HospitalApplication" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KnownIssues" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Windows1032Tested" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Windows1064Tested" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="BPInfo" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ApplicationRenewalDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="HiradNew" Nullable="true" />
+          <Property Type="Int32" Name="BAOId" Nullable="true" />
+          <Property Type="Int32" Name="ApplicationLayerId" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="AppServerId" Nullable="true" />
+          <Property Type="Int32" Name="DbServerId" Nullable="true" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAODeptPrimary" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppServerText" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DbServerText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="HiradDbList_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Application" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DBServer" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DbName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pwd" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsMonitor" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DbServerId" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="StatusText" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SupportStaff" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="HiradServerListSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SystemName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UnitSize" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AssetTag" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PO_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Field7" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ABCId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CostCenter" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SupportStaff" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Platform" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BuildVersion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Configuration" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IPAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ILOIPAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="IPAddressOther" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApplicationUse" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Function" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Processor" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="TotalCores" Nullable="true" />
+          <Property Type="String" Name="Storage" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="HDDConfiguration" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WINTELPatchSchedule" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TSMInstalled" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="TSMConfigurationPath" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="TSMBackupWindow" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="TSMTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IPRequestTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CableRunTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PortActivationTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Rack_Stack_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BuildTicket" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MoveRFC" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TivoliMonitoringLicenseApproval_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="InstallTivoliEnhancedProfile_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="IBMToolsSRM_Parity" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="QATicket_" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DecommTicket_" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Rack_StackDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BuildDate" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PatchFolderInstall" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TSMexeInstall" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ArrayConfig" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NewServerForm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SCALLANBKUP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ISSDatabaseForm" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UpdatedAssetCenter" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="QASubmmissionDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="QAPassDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="VMHost" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="HiradNew" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LastBootTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Domain" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsMonitor" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NewServerId" Nullable="true" />
+          <Property Type="String" Name="StatusText" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="HiradServerLogStatus_Result">
+          <Property Type="DateTime" Name="Logged" Nullable="true" />
+          <Property Type="String" Name="DayName" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="ServerId" Nullable="false" />
+          <Property Type="String" Name="SystemName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Total_count" Nullable="true" />
+          <Property Type="Int32" Name="success_count" Nullable="true" />
+          <Property Type="Int32" Name="Failed_count" Nullable="true" />
+          <Property Type="Int32" Name="Server_Uptime" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HiradWebAppListSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="WebFolder" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="WebSite" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WebStat" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WebSiteType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Active" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ABCID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppServer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DBServer" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RemedyGroupName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PrimayContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SecondaryContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPContact" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPDept" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BPPhone" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BPEmail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="ProdSupportAgreement" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="HiradNew" Nullable="true" />
+          <Property Type="Int32" Name="BAOId" Nullable="true" />
+          <Property Type="String" Name="DBName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsMonitor" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="StatusTypeId" Nullable="true" />
+          <Property Type="DateTime" Name="StatusTypeChangedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="AppServerId" Nullable="true" />
+          <Property Type="Int32" Name="DbServerId" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewal" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicationRenewalDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BAOwnerPrimary" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BAODeptPrimary" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AppServerText" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DbServerText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UserSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="UserType" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NUID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="IsActive" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HiAsgRASDALEntityModelsStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ApplicationEntities">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.ApplicationEntity">
+              <MappingFragment StoreEntitySet="ApplicationEntity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationInfomations">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.ApplicationInfomation">
+              <MappingFragment StoreEntitySet="ApplicationInfomation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationInformation" ColumnName="ApplicationInformation" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.Audit">
+              <MappingFragment StoreEntitySet="Audits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="OldData" ColumnName="OldData" />
+                <ScalarProperty Name="NewData" ColumnName="NewData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BAOInfoes">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.BAOInfo">
+              <MappingFragment StoreEntitySet="BAOInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAPhonePrimary" ColumnName="BAPhonePrimary" />
+                <ScalarProperty Name="BAEmailPrimary" ColumnName="BAEmailPrimary" />
+                <ScalarProperty Name="BAODeptPrimary" ColumnName="BAODeptPrimary" />
+                <ScalarProperty Name="BAOwnerSecondary" ColumnName="BAOwnerSecondary" />
+                <ScalarProperty Name="BAPhoneSecondary" ColumnName="BAPhoneSecondary" />
+                <ScalarProperty Name="BAEmailSecondary" ColumnName="BAEmailSecondary" />
+                <ScalarProperty Name="BAODeptSecondary" ColumnName="BAODeptSecondary" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExceptionLogs">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.ExceptionLog">
+              <MappingFragment StoreEntitySet="ExceptionLogs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradApps">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradApp">
+              <MappingFragment StoreEntitySet="HiradApp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="VendorPOC" ColumnName="VendorPOC" />
+                <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+                <ScalarProperty Name="ABCID" ColumnName="ABCID" />
+                <ScalarProperty Name="RemedyGroupName" ColumnName="RemedyGroupName" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="APPServerName" ColumnName="APPServerName" />
+                <ScalarProperty Name="DBServerName" ColumnName="DBServerName" />
+                <ScalarProperty Name="ApplicationLayer" ColumnName="ApplicationLayer" />
+                <ScalarProperty Name="SATName" ColumnName="SATName" />
+                <ScalarProperty Name="Layer5Location" ColumnName="Layer5Location" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="LicenseInformation" ColumnName="LicenseInformation" />
+                <ScalarProperty Name="Windows7Approved" ColumnName="Windows7Approved" />
+                <ScalarProperty Name="Windows7InstallStatus" ColumnName="Windows7InstallStatus" />
+                <ScalarProperty Name="Windows7Remediation_Plan" ColumnName="Windows7Remediation Plan" />
+                <ScalarProperty Name="Windows7Business_Approval" ColumnName="Windows7Business Approval" />
+                <ScalarProperty Name="ECSCertified" ColumnName="ECSCertified" />
+                <ScalarProperty Name="Windows10Approved" ColumnName="Windows10Approved" />
+                <ScalarProperty Name="Windows7_64Approved" ColumnName="Windows7_64Approved" />
+                <ScalarProperty Name="Windows10_64Approved" ColumnName="Windows10_64Approved" />
+                <ScalarProperty Name="Documentation" ColumnName="Documentation" />
+                <ScalarProperty Name="DocumentationDate" ColumnName="DocumentationDate" />
+                <ScalarProperty Name="Categories" ColumnName="Categories" />
+                <ScalarProperty Name="RADPOC" ColumnName="RADPOC" />
+                <ScalarProperty Name="SecondarySupport" ColumnName="SecondarySupport" />
+                <ScalarProperty Name="ApplicationDomain" ColumnName="ApplicationDomain" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="ApplicationLiveDate" ColumnName="ApplicationLiveDate" />
+                <ScalarProperty Name="Layer4SR_" ColumnName="Layer4SR#" />
+                <ScalarProperty Name="Layer4Status" ColumnName="Layer4Status" />
+                <ScalarProperty Name="HospitalApplication" ColumnName="HospitalApplication" />
+                <ScalarProperty Name="KnownIssues" ColumnName="KnownIssues" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Windows1032Tested" ColumnName="Windows1032Tested" />
+                <ScalarProperty Name="Windows1064Tested" ColumnName="Windows1064Tested" />
+                <ScalarProperty Name="BPInfo" ColumnName="BPInfo" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="ApplicationLayerId" ColumnName="ApplicationLayerId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradDbMonitors">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradDbMonitor">
+              <MappingFragment StoreEntitySet="HiradDbMonitor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="DBServer" ColumnName="DBServer" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradDbMonitorLogs">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradDbMonitorLog">
+              <MappingFragment StoreEntitySet="HiradDbMonitorLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DbMonitorId" ColumnName="DbMonitorId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradServers">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradServer">
+              <MappingFragment StoreEntitySet="HiradServer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="UnitSize" ColumnName="UnitSize" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="PO_" ColumnName="PO#" />
+                <ScalarProperty Name="Field7" ColumnName="Field7" />
+                <ScalarProperty Name="ABCId" ColumnName="ABCId" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="SupportStaff" ColumnName="SupportStaff" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="BuildVersion" ColumnName="BuildVersion" />
+                <ScalarProperty Name="Configuration" ColumnName="Configuration" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="ILOIPAddress" ColumnName="ILOIPAddress" />
+                <ScalarProperty Name="IPAddressOther" ColumnName="IPAddressOther" />
+                <ScalarProperty Name="ApplicationUse" ColumnName="ApplicationUse" />
+                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="TotalCores" ColumnName="TotalCores" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="HDDConfiguration" ColumnName="HDDConfiguration" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="WINTELPatchSchedule" ColumnName="WINTELPatchSchedule" />
+                <ScalarProperty Name="TSMInstalled" ColumnName="TSMInstalled" />
+                <ScalarProperty Name="TSMConfigurationPath" ColumnName="TSMConfigurationPath" />
+                <ScalarProperty Name="TSMBackupWindow" ColumnName="TSMBackupWindow" />
+                <ScalarProperty Name="TSMTicket_" ColumnName="TSMTicket#" />
+                <ScalarProperty Name="IPRequestTicket_" ColumnName="IPRequestTicket#" />
+                <ScalarProperty Name="CableRunTicket_" ColumnName="CableRunTicket#" />
+                <ScalarProperty Name="PortActivationTicket_" ColumnName="PortActivationTicket#" />
+                <ScalarProperty Name="Rack_Stack_" ColumnName="Rack&amp;Stack#" />
+                <ScalarProperty Name="BuildTicket" ColumnName="BuildTicket" />
+                <ScalarProperty Name="MoveRFC" ColumnName="MoveRFC" />
+                <ScalarProperty Name="TivoliMonitoringLicenseApproval_" ColumnName="TivoliMonitoringLicenseApproval#" />
+                <ScalarProperty Name="InstallTivoliEnhancedProfile_" ColumnName="InstallTivoliEnhancedProfile#" />
+                <ScalarProperty Name="IBMToolsSRM_Parity" ColumnName="IBMToolsSRM&amp;Parity" />
+                <ScalarProperty Name="QATicket_" ColumnName="QATicket#" />
+                <ScalarProperty Name="DecommTicket_" ColumnName="DecommTicket#" />
+                <ScalarProperty Name="Rack_StackDate" ColumnName="Rack&amp;StackDate" />
+                <ScalarProperty Name="BuildDate" ColumnName="BuildDate" />
+                <ScalarProperty Name="PatchFolderInstall" ColumnName="PatchFolderInstall" />
+                <ScalarProperty Name="TSMexeInstall" ColumnName="TSMexeInstall" />
+                <ScalarProperty Name="ArrayConfig" ColumnName="ArrayConfig" />
+                <ScalarProperty Name="NewServerForm" ColumnName="NewServerForm" />
+                <ScalarProperty Name="SCALLANBKUP" ColumnName="SCALLANBKUP" />
+                <ScalarProperty Name="ISSDatabaseForm" ColumnName="ISSDatabaseForm" />
+                <ScalarProperty Name="UpdatedAssetCenter" ColumnName="UpdatedAssetCenter" />
+                <ScalarProperty Name="QASubmmissionDate" ColumnName="QASubmmissionDate" />
+                <ScalarProperty Name="QAPassDate" ColumnName="QAPassDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="VMHost" ColumnName="VMHost" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="LastBootTime" ColumnName="LastBootTime" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="NewServerId" ColumnName="NewServerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradServerLogs">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradServerLog">
+              <MappingFragment StoreEntitySet="HiradServerLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="AvblRAM" ColumnName="AvblRAM" />
+                <ScalarProperty Name="AvblHDDSpace" ColumnName="AvblHDDSpace" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradWebs">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradWeb">
+              <MappingFragment StoreEntitySet="HiradWeb">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebFolder" ColumnName="WebFolder" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="WebStat" ColumnName="WebStat" />
+                <ScalarProperty Name="WebSiteType" ColumnName="WebSiteType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ABCID" ColumnName="ABCID" />
+                <ScalarProperty Name="AppServer" ColumnName="AppServer" />
+                <ScalarProperty Name="DBServer" ColumnName="DBServer" />
+                <ScalarProperty Name="RemedyGroupName" ColumnName="RemedyGroupName" />
+                <ScalarProperty Name="PrimayContact" ColumnName="PrimayContact" />
+                <ScalarProperty Name="SecondaryContact" ColumnName="SecondaryContact" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="BPDept" ColumnName="BPDept" />
+                <ScalarProperty Name="BPPhone" ColumnName="BPPhone" />
+                <ScalarProperty Name="BPEmail" ColumnName="BPEmail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProdSupportAgreement" ColumnName="ProdSupportAgreement" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="DBName" ColumnName="DBName" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="IsRenewal" ColumnName="IsRenewal" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiradWebLogs">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradWebLog">
+              <MappingFragment StoreEntitySet="HiradWebLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebId" ColumnName="WebId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LayerInfoes">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.LayerInfo">
+              <MappingFragment StoreEntitySet="LayerInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppLayerName" ColumnName="AppLayerName" />
+                <ScalarProperty Name="LayerLocation" ColumnName="LayerLocation" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RenewalDetails">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.RenewalDetail">
+              <MappingFragment StoreEntitySet="RenewalDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="IsRenewalRequired" ColumnName="IsRenewalRequired" />
+                <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedPaths">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.SharedPath">
+              <MappingFragment StoreEntitySet="SharedPath">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTypes">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.StatusType">
+              <MappingFragment StoreEntitySet="StatusType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusText" ColumnName="StatusText" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NUID" ColumnName="NUID" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="HiAsgRAS.DAL.EntityModels.Store.Split" FunctionImportName="Split">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.Split_Result">
+                <ScalarProperty Name="items" ColumnName="items" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BAOSearch" FunctionName="HiAsgRAS.DAL.EntityModels.Store.BAOSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.BAOSearch_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAPhonePrimary" ColumnName="BAPhonePrimary" />
+                <ScalarProperty Name="BAEmailPrimary" ColumnName="BAEmailPrimary" />
+                <ScalarProperty Name="BAODeptPrimary" ColumnName="BAODeptPrimary" />
+                <ScalarProperty Name="BAOwnerSecondary" ColumnName="BAOwnerSecondary" />
+                <ScalarProperty Name="BAPhoneSecondary" ColumnName="BAPhoneSecondary" />
+                <ScalarProperty Name="BAEmailSecondary" ColumnName="BAEmailSecondary" />
+                <ScalarProperty Name="BAODeptSecondary" ColumnName="BAODeptSecondary" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ClearLogData" FunctionName="HiAsgRAS.DAL.EntityModels.Store.ClearLogData" />
+          <FunctionImportMapping FunctionImportName="GetAllDBLogStatusByLastRun" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetAllDBLogStatusByLastRun">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetAllDBLogStatusByLastRun_Result">
+                <ScalarProperty Name="DbMonitorId" ColumnName="DbMonitorId" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="DBServerName" ColumnName="DBServerName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLogDetailsByServer" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetAllLogDetailsByServer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetAllLogDetailsByServer_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="UnitSize" ColumnName="UnitSize" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="PO_" ColumnName="PO#" />
+                <ScalarProperty Name="Field7" ColumnName="Field7" />
+                <ScalarProperty Name="ABCId" ColumnName="ABCId" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="SupportStaff" ColumnName="SupportStaff" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="BuildVersion" ColumnName="BuildVersion" />
+                <ScalarProperty Name="Configuration" ColumnName="Configuration" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="ILOIPAddress" ColumnName="ILOIPAddress" />
+                <ScalarProperty Name="IPAddressOther" ColumnName="IPAddressOther" />
+                <ScalarProperty Name="ApplicationUse" ColumnName="ApplicationUse" />
+                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="TotalCores" ColumnName="TotalCores" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="HDDConfiguration" ColumnName="HDDConfiguration" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="WINTELPatchSchedule" ColumnName="WINTELPatchSchedule" />
+                <ScalarProperty Name="TSMInstalled" ColumnName="TSMInstalled" />
+                <ScalarProperty Name="TSMConfigurationPath" ColumnName="TSMConfigurationPath" />
+                <ScalarProperty Name="TSMBackupWindow" ColumnName="TSMBackupWindow" />
+                <ScalarProperty Name="TSMTicket_" ColumnName="TSMTicket#" />
+                <ScalarProperty Name="IPRequestTicket_" ColumnName="IPRequestTicket#" />
+                <ScalarProperty Name="CableRunTicket_" ColumnName="CableRunTicket#" />
+                <ScalarProperty Name="PortActivationTicket_" ColumnName="PortActivationTicket#" />
+                <ScalarProperty Name="Rack_Stack_" ColumnName="Rack&amp;Stack#" />
+                <ScalarProperty Name="BuildTicket" ColumnName="BuildTicket" />
+                <ScalarProperty Name="MoveRFC" ColumnName="MoveRFC" />
+                <ScalarProperty Name="TivoliMonitoringLicenseApproval_" ColumnName="TivoliMonitoringLicenseApproval#" />
+                <ScalarProperty Name="InstallTivoliEnhancedProfile_" ColumnName="InstallTivoliEnhancedProfile#" />
+                <ScalarProperty Name="IBMToolsSRM_Parity" ColumnName="IBMToolsSRM&amp;Parity" />
+                <ScalarProperty Name="QATicket_" ColumnName="QATicket#" />
+                <ScalarProperty Name="DecommTicket_" ColumnName="DecommTicket#" />
+                <ScalarProperty Name="Rack_StackDate" ColumnName="Rack&amp;StackDate" />
+                <ScalarProperty Name="BuildDate" ColumnName="BuildDate" />
+                <ScalarProperty Name="PatchFolderInstall" ColumnName="PatchFolderInstall" />
+                <ScalarProperty Name="TSMexeInstall" ColumnName="TSMexeInstall" />
+                <ScalarProperty Name="ArrayConfig" ColumnName="ArrayConfig" />
+                <ScalarProperty Name="NewServerForm" ColumnName="NewServerForm" />
+                <ScalarProperty Name="SCALLANBKUP" ColumnName="SCALLANBKUP" />
+                <ScalarProperty Name="ISSDatabaseForm" ColumnName="ISSDatabaseForm" />
+                <ScalarProperty Name="UpdatedAssetCenter" ColumnName="UpdatedAssetCenter" />
+                <ScalarProperty Name="QASubmmissionDate" ColumnName="QASubmmissionDate" />
+                <ScalarProperty Name="QAPassDate" ColumnName="QAPassDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="VMHost" ColumnName="VMHost" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="LastBootTime" ColumnName="LastBootTime" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="NewServerId" ColumnName="NewServerId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllServerLogStatusByLastRun" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetAllServerLogStatusByLastRun">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetAllServerLogStatusByLastRun_Result">
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="AvblRAM" ColumnName="AvblRAM" />
+                <ScalarProperty Name="AvblHDDSpace" ColumnName="AvblHDDSpace" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="StatusPercent" ColumnName="StatusPercent" />
+                <ScalarProperty Name="HDDConfiguration" ColumnName="HDDConfiguration" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="LastBootTime" ColumnName="LastBootTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllWebsiteLogStatusByLastRun" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetAllWebsiteLogStatusByLastRun">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetAllWebsiteLogStatusByLastRun_Result">
+                <ScalarProperty Name="WebId" ColumnName="WebId" />
+                <ScalarProperty Name="WebFolder" ColumnName="WebFolder" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="PrimayContact" ColumnName="PrimayContact" />
+                <ScalarProperty Name="SecondaryContact" ColumnName="SecondaryContact" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="BPDept" ColumnName="BPDept" />
+                <ScalarProperty Name="BPPhone" ColumnName="BPPhone" />
+                <ScalarProperty Name="BPEmail" ColumnName="BPEmail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAppRenewalDate" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetAppRenewalDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetAppRenewalDate_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAEmailPrimary" ColumnName="BAEmailPrimary" />
+                <ScalarProperty Name="BAOwnerSecondary" ColumnName="BAOwnerSecondary" />
+                <ScalarProperty Name="BAEmailSecondary" ColumnName="BAEmailSecondary" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetClientAppDetailsById" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetClientAppDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetClientAppDetailsById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="VendorPOC" ColumnName="VendorPOC" />
+                <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+                <ScalarProperty Name="ABCID" ColumnName="ABCID" />
+                <ScalarProperty Name="RemedyGroupName" ColumnName="RemedyGroupName" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="APPServerName" ColumnName="APPServerName" />
+                <ScalarProperty Name="DBServerName" ColumnName="DBServerName" />
+                <ScalarProperty Name="ApplicationLayer" ColumnName="ApplicationLayer" />
+                <ScalarProperty Name="SATName" ColumnName="SATName" />
+                <ScalarProperty Name="Layer5Location" ColumnName="Layer5Location" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="LicenseInformation" ColumnName="LicenseInformation" />
+                <ScalarProperty Name="Windows7Approved" ColumnName="Windows7Approved" />
+                <ScalarProperty Name="Windows7InstallStatus" ColumnName="Windows7InstallStatus" />
+                <ScalarProperty Name="Windows7Remediation_Plan" ColumnName="Windows7Remediation Plan" />
+                <ScalarProperty Name="Windows7Business_Approval" ColumnName="Windows7Business Approval" />
+                <ScalarProperty Name="ECSCertified" ColumnName="ECSCertified" />
+                <ScalarProperty Name="Windows10Approved" ColumnName="Windows10Approved" />
+                <ScalarProperty Name="Windows7_64Approved" ColumnName="Windows7_64Approved" />
+                <ScalarProperty Name="Windows10_64Approved" ColumnName="Windows10_64Approved" />
+                <ScalarProperty Name="Documentation" ColumnName="Documentation" />
+                <ScalarProperty Name="DocumentationDate" ColumnName="DocumentationDate" />
+                <ScalarProperty Name="Categories" ColumnName="Categories" />
+                <ScalarProperty Name="RADPOC" ColumnName="RADPOC" />
+                <ScalarProperty Name="SecondarySupport" ColumnName="SecondarySupport" />
+                <ScalarProperty Name="ApplicationDomain" ColumnName="ApplicationDomain" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="ApplicationLiveDate" ColumnName="ApplicationLiveDate" />
+                <ScalarProperty Name="Layer4SR_" ColumnName="Layer4SR#" />
+                <ScalarProperty Name="Layer4Status" ColumnName="Layer4Status" />
+                <ScalarProperty Name="HospitalApplication" ColumnName="HospitalApplication" />
+                <ScalarProperty Name="KnownIssues" ColumnName="KnownIssues" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Windows1032Tested" ColumnName="Windows1032Tested" />
+                <ScalarProperty Name="Windows1064Tested" ColumnName="Windows1064Tested" />
+                <ScalarProperty Name="BPInfo" ColumnName="BPInfo" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="ApplicationLayerId" ColumnName="ApplicationLayerId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAODeptPrimary" ColumnName="BAODeptPrimary" />
+                <ScalarProperty Name="AppServerText" ColumnName="AppServerText" />
+                <ScalarProperty Name="DbServerText" ColumnName="DbServerText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDBDetailsById" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetDBDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetDBDetailsById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="DBServer" ColumnName="DBServer" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="StatusText" ColumnName="StatusText" />
+                <ScalarProperty Name="SupportStaff" ColumnName="SupportStaff" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRenewalDetail" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetRenewalDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetRenewalDetail_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="IsRenewalRequired" ColumnName="IsRenewalRequired" />
+                <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetServerLogStatusByDate" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetServerLogStatusByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetServerLogStatusByDate_Result">
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="MonitoredAt" ColumnName="MonitoredAt" />
+                <ScalarProperty Name="MonitoredTime" ColumnName="MonitoredTime" />
+                <ScalarProperty Name="AvblRAM" ColumnName="AvblRAM" />
+                <ScalarProperty Name="AvblHDDSpace" ColumnName="AvblHDDSpace" />
+                <ScalarProperty Name="LoggedAt" ColumnName="LoggedAt" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="StatusPercent" ColumnName="StatusPercent" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSharedNWPathDetails" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetSharedNWPathDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetSharedNWPathDetails_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="AppServerText" ColumnName="AppServerText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWebAppDetailsById" FunctionName="HiAsgRAS.DAL.EntityModels.Store.GetWebAppDetailsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.GetWebAppDetailsById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebFolder" ColumnName="WebFolder" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="WebStat" ColumnName="WebStat" />
+                <ScalarProperty Name="WebSiteType" ColumnName="WebSiteType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ABCID" ColumnName="ABCID" />
+                <ScalarProperty Name="AppServer" ColumnName="AppServer" />
+                <ScalarProperty Name="DBServer" ColumnName="DBServer" />
+                <ScalarProperty Name="RemedyGroupName" ColumnName="RemedyGroupName" />
+                <ScalarProperty Name="PrimayContact" ColumnName="PrimayContact" />
+                <ScalarProperty Name="SecondaryContact" ColumnName="SecondaryContact" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="BPDept" ColumnName="BPDept" />
+                <ScalarProperty Name="BPPhone" ColumnName="BPPhone" />
+                <ScalarProperty Name="BPEmail" ColumnName="BPEmail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProdSupportAgreement" ColumnName="ProdSupportAgreement" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="DBName" ColumnName="DBName" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="IsRenewal" ColumnName="IsRenewal" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAODeptPrimary" ColumnName="BAODeptPrimary" />
+                <ScalarProperty Name="AppServerText" ColumnName="AppServerText" />
+                <ScalarProperty Name="DbServerText" ColumnName="DbServerText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HiradAppListSearch" FunctionName="HiAsgRAS.DAL.EntityModels.Store.HiradAppListSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradAppListSearch_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="VendorPOC" ColumnName="VendorPOC" />
+                <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
+                <ScalarProperty Name="ABCID" ColumnName="ABCID" />
+                <ScalarProperty Name="RemedyGroupName" ColumnName="RemedyGroupName" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="APPServerName" ColumnName="APPServerName" />
+                <ScalarProperty Name="DBServerName" ColumnName="DBServerName" />
+                <ScalarProperty Name="ApplicationLayer" ColumnName="ApplicationLayer" />
+                <ScalarProperty Name="SATName" ColumnName="SATName" />
+                <ScalarProperty Name="Layer5Location" ColumnName="Layer5Location" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="LicenseInformation" ColumnName="LicenseInformation" />
+                <ScalarProperty Name="Windows7Approved" ColumnName="Windows7Approved" />
+                <ScalarProperty Name="Windows7InstallStatus" ColumnName="Windows7InstallStatus" />
+                <ScalarProperty Name="Windows7Remediation_Plan" ColumnName="Windows7Remediation Plan" />
+                <ScalarProperty Name="Windows7Business_Approval" ColumnName="Windows7Business Approval" />
+                <ScalarProperty Name="ECSCertified" ColumnName="ECSCertified" />
+                <ScalarProperty Name="Windows10Approved" ColumnName="Windows10Approved" />
+                <ScalarProperty Name="Windows7_64Approved" ColumnName="Windows7_64Approved" />
+                <ScalarProperty Name="Windows10_64Approved" ColumnName="Windows10_64Approved" />
+                <ScalarProperty Name="Documentation" ColumnName="Documentation" />
+                <ScalarProperty Name="DocumentationDate" ColumnName="DocumentationDate" />
+                <ScalarProperty Name="Categories" ColumnName="Categories" />
+                <ScalarProperty Name="RADPOC" ColumnName="RADPOC" />
+                <ScalarProperty Name="SecondarySupport" ColumnName="SecondarySupport" />
+                <ScalarProperty Name="ApplicationDomain" ColumnName="ApplicationDomain" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="ApplicationLiveDate" ColumnName="ApplicationLiveDate" />
+                <ScalarProperty Name="Layer4SR_" ColumnName="Layer4SR#" />
+                <ScalarProperty Name="Layer4Status" ColumnName="Layer4Status" />
+                <ScalarProperty Name="HospitalApplication" ColumnName="HospitalApplication" />
+                <ScalarProperty Name="KnownIssues" ColumnName="KnownIssues" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Windows1032Tested" ColumnName="Windows1032Tested" />
+                <ScalarProperty Name="Windows1064Tested" ColumnName="Windows1064Tested" />
+                <ScalarProperty Name="BPInfo" ColumnName="BPInfo" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="ApplicationLayerId" ColumnName="ApplicationLayerId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAODeptPrimary" ColumnName="BAODeptPrimary" />
+                <ScalarProperty Name="AppServerText" ColumnName="AppServerText" />
+                <ScalarProperty Name="DbServerText" ColumnName="DbServerText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HiradDbList" FunctionName="HiAsgRAS.DAL.EntityModels.Store.HiradDbList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradDbList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="DBServer" ColumnName="DBServer" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="StatusText" ColumnName="StatusText" />
+                <ScalarProperty Name="SupportStaff" ColumnName="SupportStaff" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HiradServerListSearch" FunctionName="HiAsgRAS.DAL.EntityModels.Store.HiradServerListSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradServerListSearch_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="UnitSize" ColumnName="UnitSize" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="PO_" ColumnName="PO#" />
+                <ScalarProperty Name="Field7" ColumnName="Field7" />
+                <ScalarProperty Name="ABCId" ColumnName="ABCId" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="SupportStaff" ColumnName="SupportStaff" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="BuildVersion" ColumnName="BuildVersion" />
+                <ScalarProperty Name="Configuration" ColumnName="Configuration" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="ILOIPAddress" ColumnName="ILOIPAddress" />
+                <ScalarProperty Name="IPAddressOther" ColumnName="IPAddressOther" />
+                <ScalarProperty Name="ApplicationUse" ColumnName="ApplicationUse" />
+                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="TotalCores" ColumnName="TotalCores" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="HDDConfiguration" ColumnName="HDDConfiguration" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="WINTELPatchSchedule" ColumnName="WINTELPatchSchedule" />
+                <ScalarProperty Name="TSMInstalled" ColumnName="TSMInstalled" />
+                <ScalarProperty Name="TSMConfigurationPath" ColumnName="TSMConfigurationPath" />
+                <ScalarProperty Name="TSMBackupWindow" ColumnName="TSMBackupWindow" />
+                <ScalarProperty Name="TSMTicket_" ColumnName="TSMTicket#" />
+                <ScalarProperty Name="IPRequestTicket_" ColumnName="IPRequestTicket#" />
+                <ScalarProperty Name="CableRunTicket_" ColumnName="CableRunTicket#" />
+                <ScalarProperty Name="PortActivationTicket_" ColumnName="PortActivationTicket#" />
+                <ScalarProperty Name="Rack_Stack_" ColumnName="Rack&amp;Stack#" />
+                <ScalarProperty Name="BuildTicket" ColumnName="BuildTicket" />
+                <ScalarProperty Name="MoveRFC" ColumnName="MoveRFC" />
+                <ScalarProperty Name="TivoliMonitoringLicenseApproval_" ColumnName="TivoliMonitoringLicenseApproval#" />
+                <ScalarProperty Name="InstallTivoliEnhancedProfile_" ColumnName="InstallTivoliEnhancedProfile#" />
+                <ScalarProperty Name="IBMToolsSRM_Parity" ColumnName="IBMToolsSRM&amp;Parity" />
+                <ScalarProperty Name="QATicket_" ColumnName="QATicket#" />
+                <ScalarProperty Name="DecommTicket_" ColumnName="DecommTicket#" />
+                <ScalarProperty Name="Rack_StackDate" ColumnName="Rack&amp;StackDate" />
+                <ScalarProperty Name="BuildDate" ColumnName="BuildDate" />
+                <ScalarProperty Name="PatchFolderInstall" ColumnName="PatchFolderInstall" />
+                <ScalarProperty Name="TSMexeInstall" ColumnName="TSMexeInstall" />
+                <ScalarProperty Name="ArrayConfig" ColumnName="ArrayConfig" />
+                <ScalarProperty Name="NewServerForm" ColumnName="NewServerForm" />
+                <ScalarProperty Name="SCALLANBKUP" ColumnName="SCALLANBKUP" />
+                <ScalarProperty Name="ISSDatabaseForm" ColumnName="ISSDatabaseForm" />
+                <ScalarProperty Name="UpdatedAssetCenter" ColumnName="UpdatedAssetCenter" />
+                <ScalarProperty Name="QASubmmissionDate" ColumnName="QASubmmissionDate" />
+                <ScalarProperty Name="QAPassDate" ColumnName="QAPassDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="VMHost" ColumnName="VMHost" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="LastBootTime" ColumnName="LastBootTime" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="NewServerId" ColumnName="NewServerId" />
+                <ScalarProperty Name="StatusText" ColumnName="StatusText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HiradServerLogStatus" FunctionName="HiAsgRAS.DAL.EntityModels.Store.HiradServerLogStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradServerLogStatus_Result">
+                <ScalarProperty Name="Logged" ColumnName="Logged" />
+                <ScalarProperty Name="DayName" ColumnName="DayName" />
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="Total_count" ColumnName="Total_count" />
+                <ScalarProperty Name="success_count" ColumnName="success_count" />
+                <ScalarProperty Name="Failed_count" ColumnName="Failed_count" />
+                <ScalarProperty Name="Server_Uptime" ColumnName="Server_Uptime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HiradWebAppListSearch" FunctionName="HiAsgRAS.DAL.EntityModels.Store.HiradWebAppListSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.HiradWebAppListSearch_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebFolder" ColumnName="WebFolder" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="WebStat" ColumnName="WebStat" />
+                <ScalarProperty Name="WebSiteType" ColumnName="WebSiteType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ABCID" ColumnName="ABCID" />
+                <ScalarProperty Name="AppServer" ColumnName="AppServer" />
+                <ScalarProperty Name="DBServer" ColumnName="DBServer" />
+                <ScalarProperty Name="RemedyGroupName" ColumnName="RemedyGroupName" />
+                <ScalarProperty Name="PrimayContact" ColumnName="PrimayContact" />
+                <ScalarProperty Name="SecondaryContact" ColumnName="SecondaryContact" />
+                <ScalarProperty Name="BPContact" ColumnName="BPContact" />
+                <ScalarProperty Name="BPDept" ColumnName="BPDept" />
+                <ScalarProperty Name="BPPhone" ColumnName="BPPhone" />
+                <ScalarProperty Name="BPEmail" ColumnName="BPEmail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProdSupportAgreement" ColumnName="ProdSupportAgreement" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HiradNew" ColumnName="HiradNew" />
+                <ScalarProperty Name="BAOId" ColumnName="BAOId" />
+                <ScalarProperty Name="DBName" ColumnName="DBName" />
+                <ScalarProperty Name="IsMonitor" ColumnName="IsMonitor" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="StatusTypeId" ColumnName="StatusTypeId" />
+                <ScalarProperty Name="StatusTypeChangedOn" ColumnName="StatusTypeChangedOn" />
+                <ScalarProperty Name="AppServerId" ColumnName="AppServerId" />
+                <ScalarProperty Name="DbServerId" ColumnName="DbServerId" />
+                <ScalarProperty Name="IsRenewal" ColumnName="IsRenewal" />
+                <ScalarProperty Name="ApplicationRenewalDate" ColumnName="ApplicationRenewalDate" />
+                <ScalarProperty Name="BAOwnerPrimary" ColumnName="BAOwnerPrimary" />
+                <ScalarProperty Name="BAODeptPrimary" ColumnName="BAODeptPrimary" />
+                <ScalarProperty Name="AppServerText" ColumnName="AppServerText" />
+                <ScalarProperty Name="DbServerText" ColumnName="DbServerText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertRenewalDetail" FunctionName="HiAsgRAS.DAL.EntityModels.Store.InsertRenewalDetail" />
+          <FunctionImportMapping FunctionImportName="UpdateMonitorInfo" FunctionName="HiAsgRAS.DAL.EntityModels.Store.UpdateMonitorInfo" />
+          <FunctionImportMapping FunctionImportName="UpdateRenewalDetail" FunctionName="HiAsgRAS.DAL.EntityModels.Store.UpdateRenewalDetail" />
+          <FunctionImportMapping FunctionImportName="UpdateServerInfo" FunctionName="HiAsgRAS.DAL.EntityModels.Store.UpdateServerInfo" />
+          <FunctionImportMapping FunctionImportName="UserSearch" FunctionName="HiAsgRAS.DAL.EntityModels.Store.UserSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HiAsgRAS.DAL.EntityModels.UserSearch_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NUID" ColumnName="NUID" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

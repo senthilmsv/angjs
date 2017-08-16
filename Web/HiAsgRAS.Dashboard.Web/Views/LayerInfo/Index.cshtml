@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "";
+}
+
+<div class="card">
+    <div class="card-header" data-background-color="purple">        
+        <i class="fa fa-adjust" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Layer Information</h4>
+
+        <button class="btn btn-warning pull-right" type="button" title="Add Layer Information" id="btnLayerInfoAdd">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add Layer 
+        </button>
+    </div>
+    <div class="card-content">
+        <table class="table table-striped table-bordered table-hover table-condensed table-striped"
+               id="hiLayerInfo" style="width:100%;">
+            <thead>
+                <tr>
+                    <th class="sortingDisabled notExport"></th>
+                 @*   <th class="notExport"></th>
+                    <th class="notExport"></th>*@
+                    <th>Layer Name</th>
+                    <th>Layer Location</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="uSearchLayerList" value="@Url.Action("GetLayerList", "LayerInfo")" />
+<input type="hidden" id="uViewLayerInformation" value="@Url.Action("ViewLayerInformation", "LayerInfo")" />
+<input type="hidden" id="hdnLayerDeleteUrl" value="@Url.Action("DeleteLayer", "LayerInfo")" />
+
+@* All the required css for this corresponding page should be added here *@
+@section head{
+    @Styles.Render("~/Content/dataTablecss")
+    
+}
+
+
+@* All the required js for this corresponding page should be added here  *@
+@section scripts{
+    @Scripts.Render("~/bundles/dashboardPageJs")
+    @Scripts.Render("~/bundles/appsJs")
+
+    <script>
+        //Dom Ready
+        $(function () {
+            layerInfoCRUD.reset_datatable_state();
+            layerInfoCRUD.searchResult();
+        });
+    </script>
+}
+

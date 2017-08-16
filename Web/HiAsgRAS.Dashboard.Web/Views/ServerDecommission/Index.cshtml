@@ -1,0 +1,299 @@
+﻿@model HiAsgRAS.ViewModel.HiradServerModel
+<div class="card">
+    <div class="card-header" data-background-color="green">
+        <i class="fa fa-server" aria-hidden="true"></i>
+        <h4 class="title" style="display: inline;">Server Decommission</h4>
+    </div>
+    <div class="card-content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                            <h4 class="title">
+                                Old Server
+                            </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="ddlOldServers">
+                                &nbsp; All
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="alert statusalert" role="alert" id="showMessage" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-md-11">
+                                    <span id="lblMessage">
+                                        No Application or Database found to this server.
+                                        Here, We could change the current status if needed.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="showStatus" style="display: none;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                            <h4 class="title">Current Status</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="ddlStatusType"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                </div>
+                <div class="row" id="showStatusUpdate" style="display: none;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary pull-left" id="btnUpdate">Update</button>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                </div>
+                <div class="row" id="showNewServer">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                            <h4 class="title">New Server</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="ddlNewServers"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            
+            <div class="row" id="showRecords" style="display: none;">
+                <div class="card card-nav-tabs">
+                    <!-- Header -->
+                    <div class="card-header" data-background-color="indigo" style="width: 98%; height: 60px; padding: 5px 5px 5px 5px">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+
+                                <ul class="nav nav-tabs" data-tabs="tabs" id="TabList">
+                                    <li class="active">
+                                        <a href="#tabServers" data-toggle="tab" data-id="tab0" onclick="setTabIndex(0)">
+                                            <i class="fa fa-server" aria-hidden="true"></i>
+                                            Client Apps<div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tabWebSites" data-toggle="tab" data-id="tab1" onclick="setTabIndex(1)">
+                                            <i class="fa fa-laptop" aria-hidden="true"></i>
+                                            Web Apps<div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tabDBServer" data-toggle="tab" data-id="tab2" onclick="setTabIndex(2)">
+                                            <i class="fa fa-server" aria-hidden="true"></i>
+                                            Database<div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="card-content">
+                        <button type="button" class="btn btn-primary pull-left" id="btnInfoSave">Update</button>
+                        <div class="clearfix"></div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabServers">
+                                <table class="table table-striped table-bordered table-hover table-condensed table-striped"
+                                       id="tblSDClient" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>
+                                                <input name="check_all_Client" type="checkbox" id="check_all_Client">All
+                                            </th>
+                                            <th>Application</th>
+                                            <th>Version</th>
+                                            <th>Server</th>
+                                            <th>Application Layer</th>
+                                            <th>Layer Location </th>
+                                            <th>Remedy Group</th>
+                                            <th>Primary Support</th>
+                                            <th>BP Info</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="tabWebSites">
+                                <table class="table table-striped table-bordered table-hover table-condensed table-striped"
+                                       id="tblSDWeb" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>
+                                                <input name="check_all_Web" type="checkbox" id="check_all_Web">All
+                                            </th>
+
+                                            <th>Web Folder</th>
+
+                                            <th>Active</th>
+                                            <th>Status</th>
+                                            <th>Remedy Group</th>
+                                            <th>Primary Support</th>
+                                            <th>Secondary Support</th>
+                                            <th>BP Contact</th>
+                                            <th>BP Dept</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="tabDBServer">
+                                <table class="table table-striped table-bordered table-hover table-condensed table-striped" id="tblSDDB" style="width: 100%">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>
+                                                <input name="check_all_Db" type="checkbox" id="check_all_Db">All
+                                            </th>
+                                            <th>Application</th>
+                                            <th>DB Name</th>
+                                            <th>Status</th>
+                                            <th>DB Server</th>
+                                            <th>Remedy Group</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <button type="button" class="btn btn-primary pull-left" id="btnInfoSave1">Update</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="uClientList" value="@Url.Action("GetAllClientAppsList", "ServerDecommission")" />
+    <input type="hidden" id="uWebList" value="@Url.Action("GetAllWebList", "ServerDecommission")" />
+    <input type="hidden" id="uDBList" value="@Url.Action("GetDBServerList", "ServerDecommission")" />
+    <input type="hidden" id="uGetAppsCount" value="@Url.Action("GetAppsCountByServer", "ServerDecommission")" />
+    <input type="hidden" id="uGetStatus" value="@Url.Action("GetServerStatus", "ServerDecommission")" />
+
+    <input type="hidden" id="hdnTabIndex" />
+    <input type="hidden" id="uUpdateServerList" value="@Url.Action("SaveServerInfo", "ServerDecommission")" />
+    <input type="hidden" id="uUpdateServerStatus" value="@Url.Action("UpdateServerStatus", "ServerDecommission")" />
+
+    @* All the required js for this corresponding page should be added here  *@
+    @section scripts{
+        @Scripts.Render("~/bundles/dashboardPageJs")
+        @Scripts.Render("~/bundles/dataTableExportPlugins")
+        @Scripts.Render("~/bundles/appsJs")
+        <script>
+
+            $(document).ready(function () {
+                $("#ddlOldServers").empty();
+                $("#ddlOldServers").append("<option value='0'>--Select--</option>");
+
+                $("#ddlNewServers").empty();
+                $("#ddlNewServers").append("<option value='0'>--Select--</option>");
+                getServers();
+                getServers1();
+                getAllStatusType();
+                ServerDecommission.reset_datatable_state();
+                $('#showRecords').hide();
+                $('#hdnTabIndex').val(0);
+                ServerDecommission.initOnClickEvents();
+                var appServerId = $("#ddlOldServers").val();
+                var dbServerId = $("#ddlOldServers").val();
+                ServerDecommission.SDClient(appServerId);
+                ServerDecommission.SDWebs(appServerId);
+                ServerDecommission.SDDBServers(dbServerId);
+            });
+
+
+            function setTabIndex(idx) {
+
+                $('#hdnTabIndex').val(idx);
+                var appServerId = $("#ddlOldServers").val();
+                var dbServerId = $("#ddlOldServers").val();
+                if (appServerId != 0 && dbServerId != 0) {
+                    if (idx == 0)
+                        ServerDecommission.SDClient(appServerId);
+                    else if (idx == 1)
+                        ServerDecommission.SDWebs(appServerId);
+                    else if (idx == 2)
+                        ServerDecommission.SDDBServers(dbServerId);
+                }
+                else {
+                    dashboard.showMessage('danger', 'please select server name');
+                }
+            }
+
+            function getServers() {
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("GetAllServers", "ServerDecommission")',
+                    type: 'GET',
+                    async: false,
+                    contentType: "text/json",
+                    success: function (data) {
+                        if (data != null) {
+                            for (var key in data) {
+                                $("#ddlOldServers").append("<option value='" + data[key].Id + "'>" + data[key].SystemName + "</option>");
+                            }
+                        }
+                    }
+                });
+            }
+            function getServers1() {
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("GetAllServers", "ServerDecommission")',
+                    type: 'GET',
+                    async: false,
+                    contentType: "text/json",
+                    success: function (data) {
+                        if (data != null) {
+                            for (var key in data) {
+                                $("#ddlNewServers").append("<option value='" + data[key].Id + "'>" + data[key].SystemName + "</option>");
+                            }
+                        }
+                    }
+                });
+            }
+            function getAllStatusType() {
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("GetAllStatusType", "ServerDecommission")',
+                    type: 'GET',
+                    async: false,
+                    contentType: "text/json",
+                    success: function (data) {
+                        if (data != null) {
+                            for (var key in data) {
+                                $("#ddlStatusType").append("<option value='" + data[key].Id + "'>" + data[key].StatusText + "</option>");
+                            }
+                        }
+                    }
+                });
+            }
+
+
+
+
+        </script>
+    }

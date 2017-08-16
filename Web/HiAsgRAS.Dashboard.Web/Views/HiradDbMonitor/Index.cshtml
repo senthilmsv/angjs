@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "";
+}
+
+<div class="card">
+    <div class="card-header" data-background-color="cyan">
+        <i class="fa fa-database" aria-hidden="true"></i> <h4 class="title" style="display: inline;">Database</h4>
+
+        <button class="btn btn-warning pull-right" type="button" title="Add New Client Apps" id="btnDbAdd">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add Database
+        </button>
+    </div>
+    <div class="card-content">
+        <table class="table table-striped table-bordered table-hover table-condensed table-striped"
+               id="hiDbList" style="width:100%;">
+            <thead>
+                <tr>
+                    <th class="sortingDisabled notExport"></th>
+                    @*<th class="notExport"></th>
+                    <th class="notExport"></th>*@
+                    <th>Application</th>
+                    <th>DB Name</th>
+                    <th>Status</th>
+                    <th>DB Server</th>
+                    <th>Remedy Group</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <input type="hidden" id="hdnDbListUrl" value="@Url.Action("GetDBList", "HiradDbMonitor")" />
+    <input type="hidden" id="uviewDbInformation" value="@Url.Action("ViewDatabaseInformation", "HiradDbMonitor")" />
+<input type="hidden" id="hdnDbDeleteUrl" value="@Url.Action("DeleteDb", "HiradDbMonitor")" />
+    
+</div>
+
+
+@* All the required css for this corresponding page should be added here *@
+@section head{
+    @Styles.Render("~/Content/dataTablecss")
+}
+
+
+@* All the required js for this corresponding page should be added here  *@
+@section scripts{
+    @Scripts.Render("~/bundles/dataTableJs")
+@Scripts.Render("~/bundles/dataTableExportPlugins")
+    @Scripts.Render("~/bundles/appsJs")
+    <script>
+        //Dom Ready
+        $(function () {
+            hiradDbCRUD.reset_datatable_state();
+            hiradDbCRUD.searchResult();
+        });
+    </script>
+}
+
