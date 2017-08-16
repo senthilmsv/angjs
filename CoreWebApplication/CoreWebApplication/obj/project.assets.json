@@ -9770,15 +9770,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\M327778\\.nuget\\packages\\": {}
+    "C:\\Users\\senthilmsv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\VS2017\\CoreWebApp\\CoreWebApplication\\CoreWebApplication\\CoreWebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\senthilmsv\\Documents\\GitHub\\angjs\\CoreWebApplication\\CoreWebApplication\\CoreWebApplication.csproj",
       "projectName": "CoreWebApplication",
-      "projectPath": "C:\\VS2017\\CoreWebApp\\CoreWebApplication\\CoreWebApplication\\CoreWebApplication.csproj",
-      "outputPath": "C:\\VS2017\\CoreWebApp\\CoreWebApplication\\CoreWebApplication\\obj\\",
+      "projectPath": "C:\\Users\\senthilmsv\\Documents\\GitHub\\angjs\\CoreWebApplication\\CoreWebApplication\\CoreWebApplication.csproj",
+      "outputPath": "C:\\Users\\senthilmsv\\Documents\\GitHub\\angjs\\CoreWebApplication\\CoreWebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

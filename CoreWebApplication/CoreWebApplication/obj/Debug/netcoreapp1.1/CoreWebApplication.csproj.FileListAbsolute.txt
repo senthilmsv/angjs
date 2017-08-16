@@ -7,3 +7,12 @@ C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1
 C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.AssemblyInfo.cs
 C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.dll
 C:\VS2017\CoreWebApp\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.pdb
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.deps.json
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.runtimeconfig.json
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.runtimeconfig.dev.json
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.dll
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\bin\Debug\netcoreapp1.1\CoreWebApplication.pdb
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.csprojResolveAssemblyReference.cache
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.AssemblyInfo.cs
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.dll
+C:\Users\senthilmsv\Documents\GitHub\angjs\CoreWebApplication\CoreWebApplication\obj\Debug\netcoreapp1.1\CoreWebApplication.pdb

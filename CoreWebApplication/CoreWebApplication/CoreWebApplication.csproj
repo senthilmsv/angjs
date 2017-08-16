@@ -54,6 +54,9 @@
     <Content Include="wwwroot\css\themes\theme-teal.min.css" />
     <Content Include="wwwroot\css\themes\theme-yellow.css" />
     <Content Include="wwwroot\css\themes\theme-yellow.min.css" />
+    <Content Include="wwwroot\images\Banner2.svg" />
+    <Content Include="wwwroot\images\Banner3.svg" />
+    <Content Include="wwwroot\images\Banner4.svg" />
     <Content Include="wwwroot\images\NBanner1.svg" />
     <Content Include="wwwroot\images\user-img-background.jpg" />
     <Content Include="wwwroot\images\user.png" />
